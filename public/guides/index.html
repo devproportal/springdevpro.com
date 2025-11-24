@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52672&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -9,17 +9,17 @@
 <meta name="keywords" content="">
 <meta name="description" content="Guides - SpringDevPro - Master Spring AI &amp; Spring Ecosystem">
 <meta name="author" content="SpringDevPro Team">
-<link rel="canonical" href="http://localhost:1313/guides/">
+<link rel="canonical" href="http://localhost:52672/guides/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css" integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:52672/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:52672/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:52672/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:52672/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:52672/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/guides/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/guides/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:52672/guides/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:52672/guides/">
 <noscript>
     <style>
         #theme-toggle,
@@ -72,6 +72,31 @@
     }
 
 </script><style>
+
+ 
+@media (max-width: 768px) {
+   
+  .site-title {
+    font-size: 1.1rem !important;  
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+  }
+
+   
+  .header {
+    padding: 0.5rem 1rem !important;  
+  }
+
+   
+  .single .post {
+    margin-bottom: 1rem !important;  
+  }
+  .footer {
+    margin-top: 1rem !important;  
+  }
+}
+
  
 :root {
   --primary: #2E7D32 !important;         
@@ -89,15 +114,27 @@
 }
 
  
+ 
 .navbar {
   background-color: var(--primary-dark) !important;
 }
+
+ 
+.navbar a,
 .menu-item a {
   color: white !important;
 }
+.navbar a:hover,
 .menu-item a:hover {
   color: var(--primary-light) !important;
 }
+
+ 
+.menu-trigger svg {
+  stroke: white !important;
+}
+
+
 
  
 a {
@@ -134,7 +171,7 @@ body {
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="SpringDevPro - Master Spring AI &amp; Spring Ecosystem (Alt + H)">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a>
+            <a href="http://localhost:52672/" accesskey="h" title="SpringDevPro - Master Spring AI &amp; Spring Ecosystem (Alt + H)">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -171,21 +208,22 @@ body {
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Getting Started with Spring AI: Build Your First RAG Application
+    <h2 class="entry-hint-parent">Getting Started with Spring AI: A Complete Step-by-Step Guide
     </h2>
   </header>
   <div class="entry-content">
-    <p>Spring AI simplifies integrating LLMs (Large Language Models) and AI tools into Spring Boot applications. In this tutorial, you’ll build a basic RAG (Retrieval-Augmented Generation) app using Spring AI, OpenAI, and Pinecone.
-Prerequisites Java 17&#43; Spring Boot 3.2&#43; OpenAI API Key (get from OpenAI Platform) Pinecone API Key and Index (create from Pinecone Console) Step 1: Add Spring AI Dependencies Add the following dependencies to your pom.xml (Maven) or build.gradle (Gradle):
-&lt;!-- Spring AI Core --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt; &lt;artifactId&gt;spring-ai-core&lt;/artifactId&gt; &lt;version&gt;1.0.0-M1&lt;/version&gt; &lt;/dependency&gt; &lt;!-- OpenAI Integration --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt; &lt;artifactId&gt;spring-ai-openai&lt;/artifactId&gt; &lt;version&gt;1.0.0-M1&lt;/version&gt; &lt;/dependency&gt; &lt;!-- Pinecone Vector DB --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt; &lt;artifactId&gt;spring-ai-pinecone&lt;/artifactId&gt; &lt;version&gt;1.0.0-M1&lt;/version&gt; &lt;/dependency&gt; Step 2: Configure Application Properties Add the following to src/main/resources/application.properties: properties # OpenAI Configuration spring.ai.openai.api-key=sk-your-openai-api-key spring.ai.openai.chat.model=gpt-3.5-turbo # Pinecone Configuration spring.ai.pinecone.api-key=your-pinecone-api-key spring.ai.pinecone.environment=gcp-starter spring.ai.pinecone.index-name=spring-ai-rag-demo Step 3: Build the RAG Service Create a RagService class to handle retrieval and generation: java 运行 import org.springframework.ai.openai.OpenAiChatClient; import org.springframework.ai.pinecone.PineconeVectorStore; import org.springframework.ai.search.service.SearchService; import org.springframework.stereotype.Service; @Service public class RagService { private final OpenAiChatClient chatClient; private final SearchService searchService; public RagService(OpenAiChatClient chatClient, PineconeVectorStore vectorStore) { this.chatClient = chatClient; this.searchService = new SearchService(vectorStore); } public String generateResponse(String userQuery) { // 1. Retrieve relevant documents from Pinecone var retrievedDocs = searchService.search(userQuery, 3); // 2. Build prompt with retrieved documents var prompt = String.format( &#34;Answer the user query using the following context:\n%s\n\nUser Query: %s&#34;, retrievedDocs.getContent(), userQuery ); // 3. Generate response with OpenAI return chatClient.call(prompt); } } Step 4: Create a REST Controller Expose the RAG service via a REST endpoint: java 运行 import org.springframework.web.bind.annotation.GetMapping; import org.springframework.web.bind.annotation.RequestParam; import org.springframework.web.bind.annotation.RestController; @RestController public class RagController { private final RagService ragService; public RagController(RagService ragService) { this.ragService = ragService; } @GetMapping(&#34;/api/rag&#34;) public String getRagResponse(@RequestParam String query) { return ragService.generateResponse(query); } } Step 5: Test the Application Run the Spring Boot app and test the endpoint with curl: bash 运行 curl &#34;http://localhost:8080/api/rag?query=What is Spring AI?&#34; You&#39;ll get a response generated using the retrieved context from Pinecone and OpenAI&#39;s LLM! Next Steps Add document ingestion (load PDFs/Markdown into Pinecone) Implement prompt engineering for better responses Add error handling and rate limiting Want to run this code yourself? Use the CodeSandbox embed below to test the full project: </p>
+    <p>Overview Spring AI is a powerful library that integrates large language models (LLMs) like OpenAI, Hugging Face, and Azure OpenAI into Spring Boot applications. It simplifies LLM calls to be as intuitive as operating a database (similar to JdbcTemplate), enabling developers to quickly build intelligent features like chatbots, question-answering systems, and content generators.
+Prerequisites Before starting, ensure your development environment meets the following requirements:
+Java Version: 17 or higher (Spring AI relies on Java 17&#43; features)
+...</p>
   </div>
   <footer class="entry-footer"><span title='2025-01-15 10:00:00 +0000 UTC'>January 15, 2025</span>&nbsp;·&nbsp;<span>SpringDevPro Team</span></footer>
-  <a class="entry-link" aria-label="post link to Getting Started with Spring AI: Build Your First RAG Application" href="http://localhost:1313/guides/getting-started-with-spring-ai/"></a>
+  <a class="entry-link" aria-label="post link to Getting Started with Spring AI: A Complete Step-by-Step Guide" href="http://localhost:52672/guides/getting-started-with-spring-ai/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:52672/">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a></span> · 
 
     <span>
         Powered by
@@ -198,6 +236,7 @@ Prerequisites Java 17&#43; Spring Boot 3.2&#43; OpenAI API Key (get from OpenAI 
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+
 
   <div id="cookie-popup" style="
   position: fixed;
@@ -228,13 +267,13 @@ Prerequisites Java 17&#43; Spring Boot 3.2&#43; OpenAI API Key (get from OpenAI 
       line-height: 1.6;
     ">
       We use cookies to enhance your experience, analyze traffic, and serve personalized ads. By using our site, you agree to our
-      <a href="/cookie-policy/" 
+      <a href="/legal/cookie-policy/" 
          style="color: ; font-weight: 500; text-decoration: none; border-bottom: 1px solid 50;"
          target="_blank">
         Cookie Policy
       </a>
       and
-      <a href="/privacy-policy/" 
+      <a href="/legal/privacy-policy/" 
          style="color: ; font-weight: 500; text-decoration: none; border-bottom: 1px solid 50;"
          target="_blank">
         Privacy Policy
@@ -311,6 +350,14 @@ Prerequisites Java 17&#43; Spring Boot 3.2&#43; OpenAI API Key (get from OpenAI 
       });
     })();
   </script>
+
+
+
+<div style="text-align:center; margin-top: 4px; font-size: 0.9rem; opacity: 0.8;">
+    <a href="/legal/terms-of-service/">Terms</a> |
+    <a href="/legal/privacy-policy/">Privacy</a> |
+    <a href="/legal/cookie-policy/">Cookies</a>
+</div>
 
 
 <script>

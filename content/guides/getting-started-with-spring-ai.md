@@ -8,8 +8,6 @@ hasCodeExample: true  # 启用代码在线运行
 codeSandboxId: "github/devproportal/spring-ai-start-example"  # CodeSandbox 仓库ID
 ---
 
-# Getting Started with Spring AI: A Complete Step-by-Step Guide
-
 ## Overview
 
 Spring AI is a powerful library that integrates large language models (LLMs) like OpenAI, Hugging Face, and Azure OpenAI into Spring Boot applications. It simplifies LLM calls to be as intuitive as operating a database (similar to `JdbcTemplate`), enabling developers to quickly build intelligent features like chatbots, question-answering systems, and content generators.
@@ -223,7 +221,7 @@ For development versions (e.g., `1.1.0-SNAPSHOT`), add Spring snapshot repositor
 
 
 
-```java
+```gradle
 // Dependency Management: Import Spring AI BOM
 
 dependencies {

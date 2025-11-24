@@ -1,81 +1,101 @@
 baseURL: "https://springdevpro.com/"
 languageCode: "en-us"
 title: "SpringDevPro - Master Spring AI & Spring Ecosystem"
-theme: "PaperMod"  # 启用 PaperMod 主题（方式1用这个）
+theme: "PaperMod"  # 启用 PaperMod 主题
 # theme: ["github.com/adityatelange/hugo-PaperMod"]  # 方式2（Hugo Modules）用这个
 
-# 主题核心配置（PaperMod 专属参数，控制布局/功能）
+# 主题核心配置（PaperMod 专属参数）
 params:
   # 站点基础信息
   title: "SpringDevPro"
   description: "Practical Spring AI & Spring Boot Tutorials for Developers"
   author: "SpringDevPro Team"
-  images: ["images/spring-ai-banner.jpg"]  # 社交分享默认图片（放在 assets/images/）
+  images: ["images/spring-ai-banner.jpg"]  # 社交分享默认图（assets/images/下）
   
-  # # 主题颜色
-  # color: "#2E7D32"
-
+  # 页脚配置（修复缩进：customText/showLinks/links 嵌套在 footer 下）
+  footer:
+    customText: "Legal"  # 链接组标题
+    showLinks: true      # 强制显示页脚链接
+    links:               # 政策链接（路径与文件一致）
+      "Cookie Policy": "/legal/cookie-policy/"
+      "Privacy Policy": "/legal/privacy-policy/"
+      "Terms of Service": "/legal/terms-of-service/"
+  
   # 布局配置
-  layout: "single"  # 文章页默认布局
-  darkMode: "auto"  # 自动切换明暗模式（欧美用户偏好）
-  disableThemeToggle: false  # 启用明暗模式切换按钮
+  layout: "single"
+  darkMode: "auto"
+  disableThemeToggle: false
 
-  # customCSS:
-  #   - "css/custom.css"  # 加载自定义配色
+  # 仅显示 guides 的内容
+  mainSections:
+    - guides
 
-  # 导航菜单（对接 PaperMod 导航栏，保留你的栏目）
-  mainMenu:
-    - name: "Home"
-      url: "/"
-      weight: 1
-    - name: "Spring AI Guides"
-      url: "/guides/"
-      weight: 2
-    - name: "AI Tools Integration"
-      url: "/ai-tools/"
-      weight: 3
-    - name: "Code Examples"
-      url: "/code/"
-      weight: 4
-    - name: "Resources"
-      url: "/resources/"
-      weight: 5
-    - name: "Privacy Policy"
-      url: "/privacy-policy/"
-      weight: 6
-  
-  # SEO 优化（PaperMod 原生支持）
+  # SEO 优化
   seo:
     disableTitleSuffix: false
     titleSeparator: "-"
   
-  # 代码高亮配置（适配 Spring/Java 代码）
+  # 代码高亮配置
   code:
-    copyButton: true  # 显示代码复制按钮（欧美用户常用）
+    copyButton: true
     highlight:
-      theme: "github-dark"  # 代码高亮主题（暗色更友好）
+      theme: "github-dark"
   
-  # 你的专属配置（AdSense、GDPR）
+  # AdSense 配置
   adsense:
     publisherId: "ca-pub-XXX"  # 替换为你的 AdSense ID
-    adSlotTop: "XXX"  # 顶部广告位 ID
-    adSlotInContent: "XXX"  # 文章内广告位 ID
+    adSlotTop: "XXX"
+    adSlotInContent: "XXX"
+  
+  # GDPR 配置（修复政策链接路径）
   gdpr:
-    cookiePolicyUrl: "/cookie-policy/"  # Cookie政策页面
-    privacyPolicyUrl: "/privacy-policy/"  # 隐私政策页面
+    cookiePolicyUrl: "/legal/cookie-policy/"  # 与文件路径一致
+    privacyPolicyUrl: "/legal/privacy-policy/" # 与文件路径一致
     acceptButtonText: "Accept All Cookies"
     declineButtonText: "Decline Non-Necessary"
 
-# 站点地图配置（保留）
+# 导航栏菜单（修复节点：移到根级 menu.main，而非 params 下）
+# menu:
+#   main:
+#     - name: "Home"
+#       url: "/"
+#       weight: 1
+#     - name: "Spring AI Guides"
+#       url: "/guides/"
+#       weight: 2
+#     - name: "AI Tools Integration"
+#       url: "/ai-tools/"
+#       weight: 3
+#     - name: "Code Examples"
+#       url: "/code/"
+#       weight: 4
+#     - name: "Resources"
+#       url: "/resources/"
+#       weight: 5
+#     - name: "Legal"  # 下拉菜单标题
+#       weight: 6
+#       identifier: "legal"  # 唯一标识（不可重复）
+#       children:  # 下拉子菜单
+#         - name: "Cookie Policy"
+#           url: "/legal/cookie-policy/"
+#           weight: 1
+#         - name: "Privacy Policy"
+#           url: "/legal/privacy-policy/"
+#           weight: 2
+#         - name: "Terms of Service"
+#           url: "/legal/terms-of-service/"
+#           weight: 3
+
+# 站点地图配置
 sitemap:
   changefreq: "weekly"
   priority: 0.7
 
-# 输出配置（保留）
+# 输出配置
 outputs:
   home: ["HTML", "RSS", "SITEMAP"]
 
-#  taxonomies（分类/标签功能，PaperMod 自动支持）
+# 分类/标签功能
 taxonomies:
   tag: "tags"
   category: "categories"

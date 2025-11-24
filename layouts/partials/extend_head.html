@@ -1,4 +1,29 @@
 <style>
+
+/* 针对移动端（屏幕宽度 ≤ 768px）的适配 */
+@media (max-width: 768px) {
+  /* 1. 修复网站名折行：缩小字体+强制不折行 */
+  .site-title {
+    font-size: 1.1rem !important; /* 缩小标题字体（可根据实际长度调整，比如1.0-1.2rem） */
+    white-space: nowrap; /* 强制文字不折行 */
+    overflow: hidden; /* 超长时隐藏溢出部分（可选） */
+    text-overflow: ellipsis; /* 溢出部分显示省略号（可选，避免文字截断太生硬） */
+  }
+
+  /* 优化网站名所在头部的紧凑度（可选，进一步减少折行概率） */
+  .header {
+    padding: 0.5rem 1rem !important; /* 缩小头部上下 padding（默认可能是1rem+） */
+  }
+
+  /* 2. 修复中间空白太大：减小文章区域与页脚的间距 */
+  .single .post {
+    margin-bottom: 1rem !important; /* 缩小文章底部的空白（默认可能是2-3rem） */
+  }
+  .footer {
+    margin-top: 1rem !important; /* 缩小页脚顶部的空白（默认可能是2rem+） */
+  }
+}
+
 /* 1. 基础配色变量 */
 :root {
   --primary: #2E7D32 !important;        /* Spring绿 */
@@ -16,15 +41,27 @@
 }
 
 /* 2. 强制覆盖导航栏 */
+/* 修复导航栏不破坏 PaperMod 布局 */
 .navbar {
   background-color: var(--primary-dark) !important;
 }
+
+/* 保持文字颜色，不修改布局类 */
+.navbar a,
 .menu-item a {
   color: white !important;
 }
+.navbar a:hover,
 .menu-item a:hover {
   color: var(--primary-light) !important;
 }
+
+/* 手机端菜单按钮颜色 */
+.menu-trigger svg {
+  stroke: white !important;
+}
+
+
 
 /* 3. 强制覆盖链接 */
 a {

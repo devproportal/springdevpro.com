@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
-    <link>http://localhost:52672/</link>
-    <description>Recent content on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</description>
+    <title>Legals on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
+    <link>http://localhost:52672/legal/</link>
+    <description>Recent content in Legals on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</description>
     <image>
       <title>SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
       <url>http://localhost:52672/images/spring-ai-banner.jpg</url>
@@ -12,7 +12,7 @@
     <generator>Hugo -- 0.149.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Nov 2025 10:32:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:52672/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:52672/legal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Terms of Service</title>
       <link>http://localhost:52672/legal/terms-of-service/</link>
@@ -48,19 +48,6 @@
 &lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
 &lt;p&gt;This Cookie Policy explains how we use cookies and similar tracking technologies on &lt;a href=&#34;https://springdevpro.com&#34;&gt;springdevpro.com&lt;/a&gt;. We are committed to complying with the General Data Protection Regulation (GDPR), Privacy and Electronic Communications Regulations (PECR), and California Consumer Privacy Act (CCPA)/California Privacy Rights Act (CPRA) to protect your privacy.&lt;/p&gt;
 &lt;p&gt;Cookies are small text files stored on your device when you visit the Site. They help improve site functionality, deliver personalized content, analyze user behavior, and support our Google AdSense monetization efforts. By using the Site, you acknowledge understanding of this Policy and consent to our cookie practices as described.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Getting Started with Spring AI: A Complete Step-by-Step Guide</title>
-      <link>http://localhost:52672/guides/getting-started-with-spring-ai/</link>
-      <pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:52672/guides/getting-started-with-spring-ai/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;Spring AI is a powerful library that integrates large language models (LLMs) like OpenAI, Hugging Face, and Azure OpenAI into Spring Boot applications. It simplifies LLM calls to be as intuitive as operating a database (similar to &lt;code&gt;JdbcTemplate&lt;/code&gt;), enabling developers to quickly build intelligent features like chatbots, question-answering systems, and content generators.&lt;/p&gt;
-&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
-&lt;p&gt;Before starting, ensure your development environment meets the following requirements:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Java Version&lt;/strong&gt;: 17 or higher (Spring AI relies on Java 17+ features)&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

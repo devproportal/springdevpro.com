@@ -1,133 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52672&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Getting Started with Spring AI: Build Your First RAG Application | SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
+<title>Getting Started with Spring AI: A Complete Step-by-Step Guide | SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
 <meta name="keywords" content="Spring AI, RAG, LLM, Spring Boot">
-<meta name="description" content="Spring AI simplifies integrating LLMs (Large Language Models) and AI tools into Spring Boot applications. In this tutorial, you&rsquo;ll build a basic RAG (Retrieval-Augmented Generation) app using Spring AI, OpenAI, and Pinecone.
+<meta name="description" content="Overview
+Spring AI is a powerful library that integrates large language models (LLMs) like OpenAI, Hugging Face, and Azure OpenAI into Spring Boot applications. It simplifies LLM calls to be as intuitive as operating a database (similar to JdbcTemplate), enabling developers to quickly build intelligent features like chatbots, question-answering systems, and content generators.
 Prerequisites
+Before starting, ensure your development environment meets the following requirements:
 
-Java 17&#43;
-Spring Boot 3.2&#43;
-OpenAI API Key (get from OpenAI Platform)
-Pinecone API Key and Index (create from Pinecone Console)
 
-Step 1: Add Spring AI Dependencies
-Add the following dependencies to your pom.xml (Maven) or build.gradle (Gradle):
-&lt;!-- Spring AI Core --&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-ai-core&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0-M1&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;!-- OpenAI Integration --&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-ai-openai&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0-M1&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;!-- Pinecone Vector DB --&gt;
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-ai-pinecone&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0-M1&lt;/version&gt;
-&lt;/dependency&gt;
-
-Step 2: Configure Application Properties
-Add the following to src/main/resources/application.properties:
-properties
-# OpenAI Configuration
-spring.ai.openai.api-key=sk-your-openai-api-key
-spring.ai.openai.chat.model=gpt-3.5-turbo
-
-# Pinecone Configuration
-spring.ai.pinecone.api-key=your-pinecone-api-key
-spring.ai.pinecone.environment=gcp-starter
-spring.ai.pinecone.index-name=spring-ai-rag-demo
-Step 3: Build the RAG Service
-Create a RagService class to handle retrieval and generation:
-java
-运行
-import org.springframework.ai.openai.OpenAiChatClient;
-import org.springframework.ai.pinecone.PineconeVectorStore;
-import org.springframework.ai.search.service.SearchService;
-import org.springframework.stereotype.Service;
-
-@Service
-public class RagService {
-
-  private final OpenAiChatClient chatClient;
-  private final SearchService searchService;
-
-  public RagService(OpenAiChatClient chatClient, PineconeVectorStore vectorStore) {
-    this.chatClient = chatClient;
-    this.searchService = new SearchService(vectorStore);
-  }
-
-  public String generateResponse(String userQuery) {
-    // 1. Retrieve relevant documents from Pinecone
-    var retrievedDocs = searchService.search(userQuery, 3);
-    
-    // 2. Build prompt with retrieved documents
-    var prompt = String.format(
-      &#34;Answer the user query using the following context:\n%s\n\nUser Query: %s&#34;,
-      retrievedDocs.getContent(), userQuery
-    );
-    
-    // 3. Generate response with OpenAI
-    return chatClient.call(prompt);
-  }
-}
-Step 4: Create a REST Controller
-Expose the RAG service via a REST endpoint:
-java
-运行
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class RagController {
-
-  private final RagService ragService;
-
-  public RagController(RagService ragService) {
-    this.ragService = ragService;
-  }
-
-  @GetMapping(&#34;/api/rag&#34;)
-  public String getRagResponse(@RequestParam String query) {
-    return ragService.generateResponse(query);
-  }
-}
-Step 5: Test the Application
-Run the Spring Boot app and test the endpoint with curl:
-bash
-运行
-curl &#34;http://localhost:8080/api/rag?query=What is Spring AI?&#34;
-You&#39;ll get a response generated using the retrieved context from Pinecone and OpenAI&#39;s LLM!
-Next Steps
-Add document ingestion (load PDFs/Markdown into Pinecone)
-Implement prompt engineering for better responses
-Add error handling and rate limiting
-Want to run this code yourself? Use the CodeSandbox embed below to test the full project:
-">
+Java Version: 17 or higher (Spring AI relies on Java 17&#43; features)">
 <meta name="author" content="SpringDevPro Team">
-<link rel="canonical" href="http://localhost:1313/guides/getting-started-with-spring-ai/">
+<link rel="canonical" href="http://localhost:52672/guides/getting-started-with-spring-ai/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css" integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:52672/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:52672/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:52672/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:52672/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:52672/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/guides/getting-started-with-spring-ai/">
+<link rel="alternate" hreflang="en" href="http://localhost:52672/guides/getting-started-with-spring-ai/">
 <noscript>
     <style>
         #theme-toggle,
@@ -180,6 +77,31 @@ Want to run this code yourself? Use the CodeSandbox embed below to test the full
     }
 
 </script><style>
+
+ 
+@media (max-width: 768px) {
+   
+  .site-title {
+    font-size: 1.1rem !important;  
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+  }
+
+   
+  .header {
+    padding: 0.5rem 1rem !important;  
+  }
+
+   
+  .single .post {
+    margin-bottom: 1rem !important;  
+  }
+  .footer {
+    margin-top: 1rem !important;  
+  }
+}
+
  
 :root {
   --primary: #2E7D32 !important;         
@@ -197,15 +119,27 @@ Want to run this code yourself? Use the CodeSandbox embed below to test the full
 }
 
  
+ 
 .navbar {
   background-color: var(--primary-dark) !important;
 }
+
+ 
+.navbar a,
 .menu-item a {
   color: white !important;
 }
+.navbar a:hover,
 .menu-item a:hover {
   color: var(--primary-light) !important;
 }
+
+ 
+.menu-trigger svg {
+  stroke: white !important;
+}
+
+
 
  
 a {
@@ -242,7 +176,7 @@ body {
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="SpringDevPro - Master Spring AI &amp; Spring Ecosystem (Alt + H)">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a>
+            <a href="http://localhost:52672/" accesskey="h" title="SpringDevPro - Master Spring AI &amp; Spring Ecosystem (Alt + H)">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -276,138 +210,713 @@ body {
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Getting Started with Spring AI: Build Your First RAG Application
+      Getting Started with Spring AI: A Complete Step-by-Step Guide
     </h1>
     <div class="post-meta"><span title='2025-01-15 10:00:00 +0000 UTC'>January 15, 2025</span>&nbsp;·&nbsp;<span>SpringDevPro Team</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>Spring AI simplifies integrating LLMs (Large Language Models) and AI tools into Spring Boot applications. In this tutorial, you&rsquo;ll build a basic RAG (Retrieval-Augmented Generation) app using Spring AI, OpenAI, and Pinecone.</p>
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>Spring AI is a powerful library that integrates large language models (LLMs) like OpenAI, Hugging Face, and Azure OpenAI into Spring Boot applications. It simplifies LLM calls to be as intuitive as operating a database (similar to <code>JdbcTemplate</code>), enabling developers to quickly build intelligent features like chatbots, question-answering systems, and content generators.</p>
 <h2 id="prerequisites">Prerequisites<a hidden class="anchor" aria-hidden="true" href="#prerequisites">#</a></h2>
+<p>Before starting, ensure your development environment meets the following requirements:</p>
 <ul>
-<li>Java 17+</li>
-<li>Spring Boot 3.2+</li>
-<li>OpenAI API Key (get from <a href="https://platform.openai.com/">OpenAI Platform</a>)</li>
-<li>Pinecone API Key and Index (create from <a href="https://app.pinecone.io/">Pinecone Console</a>)</li>
+<li>
+<p><strong>Java Version</strong>: 17 or higher (Spring AI relies on Java 17+ features)</p>
+</li>
+<li>
+<p><strong>Spring Boot Version</strong>: 3.2.x or higher (officially supports 3.4.x; 3.5.x will be supported after release)</p>
+</li>
+<li>
+<p><strong>Build Tool</strong>: Maven 3.6.3+ or Gradle 5.0+</p>
+</li>
+<li>
+<p><strong>API Key</strong>: An OpenAI API Key (obtain from <a href="https://platform.openai.com/api-keys">OpenAI Platform</a>)</p>
+</li>
 </ul>
-<h2 id="step-1-add-spring-ai-dependencies">Step 1: Add Spring AI Dependencies<a hidden class="anchor" aria-hidden="true" href="#step-1-add-spring-ai-dependencies">#</a></h2>
-<p>Add the following dependencies to your <code>pom.xml</code> (Maven) or <code>build.gradle</code> (Gradle):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Spring AI Core --&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-core<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>1.0.0-M1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+<h2 id="1-create-a-spring-boot-project">1. Create a Spring Boot Project<a hidden class="anchor" aria-hidden="true" href="#1-create-a-spring-boot-project">#</a></h2>
+<p>Use <strong>Spring Initializr</strong> (the fastest way) to generate a project with the required dependencies:</p>
+<h3 id="step-11-access-spring-initializr">Step 1.1: Access Spring Initializr<a hidden class="anchor" aria-hidden="true" href="#step-11-access-spring-initializr">#</a></h3>
+<p>Visit <a href="https://start.spring.io/">start.spring.io</a> and configure the project as follows:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Configuration Item</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Project Type</td>
+          <td>Maven/Gradle (choose based on preference)</td>
+      </tr>
+      <tr>
+          <td>Language</td>
+          <td>Java</td>
+      </tr>
+      <tr>
+          <td>Spring Boot Version</td>
+          <td>3.2.x or higher</td>
+      </tr>
+      <tr>
+          <td>Group</td>
+          <td>com.springdevpro (customize as needed)</td>
+      </tr>
+      <tr>
+          <td>Artifact</td>
+          <td>spring-ai-demo</td>
+      </tr>
+      <tr>
+          <td>Name</td>
+          <td>SpringAIDemo</td>
+      </tr>
+      <tr>
+          <td>Packaging</td>
+          <td>Jar</td>
+      </tr>
+      <tr>
+          <td>Java Version</td>
+          <td>17</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="step-12-add-dependencies">Step 1.2: Add Dependencies<a hidden class="anchor" aria-hidden="true" href="#step-12-add-dependencies">#</a></h3>
+<p>Select the following dependencies (Spring Initializr will auto-include them):</p>
+<ul>
+<li>
+<p><strong>Spring Web</strong>: For building REST APIs</p>
+</li>
+<li>
+<p><strong>Spring AI OpenAI</strong>: Core dependency for integrating OpenAI models</p>
+</li>
+<li>
+<p><strong>Lombok</strong> (Optional): Reduces boilerplate code (e.g., getters/setters)</p>
+</li>
+<li>
+<p><strong>Spring Boot Actuator</strong> (Optional): For monitoring application health</p>
+</li>
+</ul>
+<p>Click <strong>Generate</strong> to download the project zip, then extract it to your local directory.</p>
+<h2 id="2-configure-dependencies">2. Configure Dependencies<a hidden class="anchor" aria-hidden="true" href="#2-configure-dependencies">#</a></h2>
+<p>If you didn’t use Spring Initializr, manually add the Spring AI dependencies to your build file.</p>
+<h3 id="21-maven-pomxml">2.1 Maven (<code>pom.xml</code>)<a hidden class="anchor" aria-hidden="true" href="#21-maven-pomxml">#</a></h3>
+<h4 id="211-stable-versions-100-maven-central">2.1.1 Stable Versions (1.0.0+) (Maven Central)<a hidden class="anchor" aria-hidden="true" href="#211-stable-versions-100-maven-central">#</a></h4>
+<p>Stable releases are available in Maven Central (no extra repository configuration needed):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> <span style="color:#75715e">&lt;!-- Dependency Management: Import Spring AI BOM (unifies versioning) --&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- OpenAI Integration --&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-openai<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>1.0.0-M1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;dependencyManagement&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Pinecone Vector DB --&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-pinecone<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;version&gt;</span>1.0.0-M1<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;dependencies&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Step 2: Configure Application Properties
-</span></span><span style="display:flex;"><span>Add the following to src/main/resources/application.properties:
-</span></span><span style="display:flex;"><span>properties
-</span></span><span style="display:flex;"><span># OpenAI Configuration
-</span></span><span style="display:flex;"><span>spring.ai.openai.api-key=sk-your-openai-api-key
-</span></span><span style="display:flex;"><span>spring.ai.openai.chat.model=gpt-3.5-turbo
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;dependency&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span># Pinecone Configuration
-</span></span><span style="display:flex;"><span>spring.ai.pinecone.api-key=your-pinecone-api-key
-</span></span><span style="display:flex;"><span>spring.ai.pinecone.environment=gcp-starter
-</span></span><span style="display:flex;"><span>spring.ai.pinecone.index-name=spring-ai-rag-demo
-</span></span><span style="display:flex;"><span>Step 3: Build the RAG Service
-</span></span><span style="display:flex;"><span>Create a RagService class to handle retrieval and generation:
-</span></span><span style="display:flex;"><span>java
-</span></span><span style="display:flex;"><span>运行
-</span></span><span style="display:flex;"><span>import org.springframework.ai.openai.OpenAiChatClient;
-</span></span><span style="display:flex;"><span>import org.springframework.ai.pinecone.PineconeVectorStore;
-</span></span><span style="display:flex;"><span>import org.springframework.ai.search.service.SearchService;
-</span></span><span style="display:flex;"><span>import org.springframework.stereotype.Service;
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai <span style="color:#f92672">&lt;/groupId&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>@Service
-</span></span><span style="display:flex;"><span>public class RagService {
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-bom <span style="color:#f92672">&lt;/artifactId&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  private final OpenAiChatClient chatClient;
-</span></span><span style="display:flex;"><span>  private final SearchService searchService;
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;version&gt;</span>1.0.0 <span style="color:#f92672">&lt;/version&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  public RagService(OpenAiChatClient chatClient, PineconeVectorStore vectorStore) {
-</span></span><span style="display:flex;"><span>    this.chatClient = chatClient;
-</span></span><span style="display:flex;"><span>    this.searchService = new SearchService(vectorStore);
-</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;type&gt;</span>pom <span style="color:#f92672">&lt;/type&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  public String generateResponse(String userQuery) {
-</span></span><span style="display:flex;"><span>    // 1. Retrieve relevant documents from Pinecone
-</span></span><span style="display:flex;"><span>    var retrievedDocs = searchService.search(userQuery, 3);
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;scope&gt;</span>import <span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/dependencyManagement&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">&lt;!-- Core Dependencies --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">&lt;!-- Spring Web --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot <span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web <span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">&lt;!-- Spring AI OpenAI Starter (auto-configures ChatClient) --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai <span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-openai-spring-boot-starter <span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">&lt;!-- Lombok (Optional) --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;groupId&gt;</span>org.projectlombok <span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;artifactId&gt;</span>lombok <span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;optional&gt;</span>true <span style="color:#f92672">&lt;/optional&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span></code></pre></div><h4 id="212-snapshotmilestone-versions-before-100">2.1.2 Snapshot/Milestone Versions (Before 1.0.0)<a hidden class="anchor" aria-hidden="true" href="#212-snapshotmilestone-versions-before-100">#</a></h4>
+<p>For development versions (e.g., <code>1.1.0-SNAPSHOT</code>), add Spring snapshot repositories:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> <span style="color:#f92672">&lt;repositories&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">&lt;!-- Spring Snapshot Repository --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;id&gt;</span>spring-snapshots <span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;name&gt;</span>Spring Snapshots <span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;url&gt;</span>https://repo.spring.io/snapshot <span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;releases&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;enabled&gt;</span>false <span style="color:#f92672">&lt;/enabled&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;/releases&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">&lt;!-- Central Portal Snapshot Repository --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;id&gt;</span>central-portal-snapshots <span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;name&gt;</span>Central Portal Snapshots <span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;url&gt;</span>https://central.sonatype.com/repository/maven-snapshots/ <span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;releases&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;enabled&gt;</span>false <span style="color:#f92672">&lt;/enabled&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;/releases&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;snapshots&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;enabled&gt;</span>true <span style="color:#f92672">&lt;/enabled&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;/snapshots&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/repositories&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">&lt;!-- Update BOM version to snapshot --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;dependencyManagement&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai <span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-bom <span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;version&gt;</span>1.1.0-SNAPSHOT <span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;type&gt;</span>pom <span style="color:#f92672">&lt;/type&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&lt;scope&gt;</span>import <span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/dependencyManagement&gt;</span>
+</span></span></code></pre></div><h3 id="22-gradle-buildgradle">2.2 Gradle (<code>build.gradle</code>)<a hidden class="anchor" aria-hidden="true" href="#22-gradle-buildgradle">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gradle" data-lang="gradle"><span style="display:flex;"><span><span style="color:#75715e">// Dependency Management: Import Spring AI BOM
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    implementation <span style="color:#a6e22e">platform</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;org.springframework.ai:spring-ai-bom:1.0.0&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    // 2. Build prompt with retrieved documents
-</span></span><span style="display:flex;"><span>    var prompt = String.format(
-</span></span><span style="display:flex;"><span>      &#34;Answer the user query using the following context:\n%s\n\nUser Query: %s&#34;,
-</span></span><span style="display:flex;"><span>      retrievedDocs.getContent(), userQuery
-</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Spring Web
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    implementation <span style="color:#e6db74">&#39;org.springframework.boot:spring-boot-starter-web&#39;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    // 3. Generate response with OpenAI
-</span></span><span style="display:flex;"><span>    return chatClient.call(prompt);
-</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Spring AI OpenAI
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    implementation <span style="color:#e6db74">&#39;org.springframework.ai:spring-ai-openai-spring-boot-starter&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Lombok (Optional)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    compileOnly <span style="color:#e6db74">&#39;org.projectlombok:lombok&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    annotationProcessor <span style="color:#e6db74">&#39;org.projectlombok:lombok&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For Snapshot Versions (add this block)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    maven <span style="color:#f92672">{</span> url <span style="color:#e6db74">&#39;https://repo.spring.io/snapshot&#39;</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    maven <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Central Portal Snapshots&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://central.sonatype.com/repository/maven-snapshots/&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="3-configure-openai-api-key">3. Configure OpenAI API Key<a hidden class="anchor" aria-hidden="true" href="#3-configure-openai-api-key">#</a></h2>
+<p>Spring AI needs your OpenAI API Key to communicate with OpenAI’s services. Configure it in the <code>application.yml</code> (or <code>application.properties</code>) file.</p>
+<h3 id="31-srcmainresourcesapplicationyml">3.1 <code>src/main/resources/application.yml</code><a hidden class="anchor" aria-hidden="true" href="#31-srcmainresourcesapplicationyml">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ai</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">openai</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">api-key</span>: <span style="color:#e6db74">&#34;sk-your-openai-api-key-here&#34;</span>  <span style="color:#75715e"># Replace with your actual key</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">base-url</span>: <span style="color:#e6db74">&#34;https://api.openai.com/v1&#34;</span>   <span style="color:#75715e"># Default OpenAI API endpoint</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">chat</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">options</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">model</span>: <span style="color:#e6db74">&#34;gpt-4&#34;</span>  <span style="color:#75715e"># Use &#34;gpt-3.5-turbo&#34; for lower cost</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">temperature</span>: <span style="color:#ae81ff">0.7</span>  <span style="color:#75715e"># Controls randomness (0 = precise, 1 = creative)</span>
+</span></span></code></pre></div><h3 id="32-alternative-use-a-openai-file-for-spring-cli">3.2 Alternative: Use a <code>.openai</code> File (For Spring CLI)<a hidden class="anchor" aria-hidden="true" href="#32-alternative-use-a-openai-file-for-spring-cli">#</a></h3>
+<p>If you use Spring CLI (e.g., <code>spring ai add</code> commands), save the API Key in a <code>.openai</code> file in your home directory (<code>~/.openai</code> on macOS/Linux, <code>C:\Users\YourName\.openai</code> on Windows):</p>
+<pre tabindex="0"><code>open\_ai\_api\_key=sk-your-openai-api-key-here
+</code></pre><h2 id="4-implement-core-features">4. Implement Core Features<a hidden class="anchor" aria-hidden="true" href="#4-implement-core-features">#</a></h2>
+<p>We’ll build three common features:</p>
+<ol>
+<li>
+<p>Basic LLM call (single-turn question-answering)</p>
+</li>
+<li>
+<p>Multi-turn conversation (with memory)</p>
+</li>
+<li>
+<p>Structured prompts (using <code>PromptTemplate</code>)</p>
+</li>
+</ol>
+<h3 id="41-feature-1-basic-llm-call-single-turn">4.1 Feature 1: Basic LLM Call (Single-Turn)<a hidden class="anchor" aria-hidden="true" href="#41-feature-1-basic-llm-call-single-turn">#</a></h3>
+<p>Create a <strong>service</strong> to wrap <code>ChatClient</code> (Spring AI’s core interface for LLM calls) and a <strong>controller</strong> to expose a REST API.</p>
+<h4 id="411-service-layer-aiservicejava">4.1.1 Service Layer (<code>AIService.java</code>)<a hidden class="anchor" aria-hidden="true" href="#411-service-layer-aiservicejava">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.springdevpro.springai.service;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.ChatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Service;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIService</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ChatClient is auto-configured by Spring AI OpenAI Starter</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ChatClient chatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructor injection (no @Autowired needed in Spring 4.3+)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">AIService</span>(ChatClient chatClient) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">chatClient</span> <span style="color:#f92672">=</span> chatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Send a single question to OpenAI and return the response.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param question User&#39;s question
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return LLM-generated response
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">askSingleQuestion</span>(String question) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Use chatClient.call() for simple one-way calls</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> chatClient.<span style="color:#a6e22e">call</span>(question);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>Step 4: Create a REST Controller
-</span></span><span style="display:flex;"><span>Expose the RAG service via a REST endpoint:
-</span></span><span style="display:flex;"><span>java
-</span></span><span style="display:flex;"><span>运行
-</span></span><span style="display:flex;"><span>import org.springframework.web.bind.annotation.GetMapping;
-</span></span><span style="display:flex;"><span>import org.springframework.web.bind.annotation.RequestParam;
-</span></span><span style="display:flex;"><span>import org.springframework.web.bind.annotation.RestController;
+</span></span></code></pre></div><h4 id="412-controller-layer-aicontrollerjava">4.1.2 Controller Layer (<code>AIController.java</code>)<a hidden class="anchor" aria-hidden="true" href="#412-controller-layer-aicontrollerjava">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.springdevpro.springai.controller;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>@RestController
-</span></span><span style="display:flex;"><span>public class RagController {
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.springdevpro.springai.service.AIService;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  private final RagService ragService;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  public RagController(RagService ragService) {
-</span></span><span style="display:flex;"><span>    this.ragService = ragService;
-</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  @GetMapping(&#34;/api/rag&#34;)
-</span></span><span style="display:flex;"><span>  public String getRagResponse(@RequestParam String query) {
-</span></span><span style="display:flex;"><span>    return ragService.generateResponse(query);
-</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestParam;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/api/ai&#34;</span>)  <span style="color:#75715e">// Base path for AI APIs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIController</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> AIService aiService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">AIController</span>(AIService aiService) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">aiService</span> <span style="color:#f92672">=</span> aiService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * REST API for single-turn question-answering.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Example: http://localhost:8080/api/ai/ask?question=What is Spring AI?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/ask&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">askQuestion</span>(<span style="color:#a6e22e">@RequestParam</span> String question) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> aiService.<span style="color:#a6e22e">askSingleQuestion</span>(question);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>Step 5: Test the Application
-</span></span><span style="display:flex;"><span>Run the Spring Boot app and test the endpoint with curl:
-</span></span><span style="display:flex;"><span>bash
-</span></span><span style="display:flex;"><span>运行
-</span></span><span style="display:flex;"><span>curl &#34;http://localhost:8080/api/rag?query=What is Spring AI?&#34;
-</span></span><span style="display:flex;"><span>You&#39;ll get a response generated using the retrieved context from Pinecone and OpenAI&#39;s LLM!
-</span></span><span style="display:flex;"><span>Next Steps
-</span></span><span style="display:flex;"><span>Add document ingestion (load PDFs/Markdown into Pinecone)
-</span></span><span style="display:flex;"><span>Implement prompt engineering for better responses
-</span></span><span style="display:flex;"><span>Add error handling and rate limiting
-</span></span><span style="display:flex;"><span>Want to run this code yourself? Use the CodeSandbox embed below to test the full project:
-</span></span></code></pre></div>
+</span></span></code></pre></div><h3 id="42-feature-2-multi-turn-conversation-with-memory">4.2 Feature 2: Multi-Turn Conversation (With Memory)<a hidden class="anchor" aria-hidden="true" href="#42-feature-2-multi-turn-conversation-with-memory">#</a></h3>
+<p>To enable the LLM to &ldquo;remember&rdquo; previous messages, use Spring AI’s <code>ChatMemory</code> (we’ll use <code>InMemoryChatMemory</code> for simplicity).</p>
+<h4 id="421-add-memory-dependency">4.2.1 Add Memory Dependency<a hidden class="anchor" aria-hidden="true" href="#421-add-memory-dependency">#</a></h4>
+<p>First, add the <code>spring-ai-memory-in-memory</code> dependency (already included in the starter for 1.0.0+; if not, add manually):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> <span style="color:#75715e">&lt;!-- Maven (if missing) --&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.ai <span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;artifactId&gt;</span>spring-ai-memory-in-memory <span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Gradle (if missing)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>implementation <span style="color:#960050;background-color:#1e0010">&#39;</span>org.<span style="color:#a6e22e">springframework</span>.<span style="color:#a6e22e">ai</span>:spring<span style="color:#f92672">-</span>ai<span style="color:#f92672">-</span>memory<span style="color:#f92672">-</span>in<span style="color:#f92672">-</span>memory<span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span></code></pre></div><h4 id="422-update-aiservicejava-for-multi-turn">4.2.2 Update <code>AIService.java</code> for Multi-Turn<a hidden class="anchor" aria-hidden="true" href="#422-update-aiservicejava-for-multi-turn">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.springdevpro.springai.service;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.ChatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.memory.ChatMemory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.memory.InMemoryChatMemory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.prompt.Prompt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Service;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIService</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ChatClient chatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ChatMemory chatMemory;  <span style="color:#75715e">// Stores conversation history</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">AIService</span>(ChatClient chatClient) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">chatClient</span> <span style="color:#f92672">=</span> chatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Initialize in-memory chat memory (use Redis for distributed apps)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">chatMemory</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InMemoryChatMemory();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... (keep askSingleQuestion method)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Multi-turn conversation: remembers previous messages.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param userInput User&#39;s new message
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return LLM response (considers history)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">chatWithMemory</span>(String userInput) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 1. Add user&#39;s new input to memory</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Prompt userPrompt <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Prompt(userInput);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        chatMemory.<span style="color:#a6e22e">add</span>(userPrompt);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 2. Send full conversation history to LLM</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String llmResponse <span style="color:#f92672">=</span> chatClient.<span style="color:#a6e22e">call</span>(chatMemory.<span style="color:#a6e22e">get</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 3. Add LLM&#39;s response to memory for next turns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        chatMemory.<span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">new</span> Prompt(llmResponse));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> llmResponse;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="423-add-controller-endpoint-for-multi-turn">4.2.3 Add Controller Endpoint for Multi-Turn<a hidden class="anchor" aria-hidden="true" href="#423-add-controller-endpoint-for-multi-turn">#</a></h4>
+<p>Update <code>AIController.java</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/api/ai&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIController</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... (keep existing code)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * REST API for multi-turn conversation.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Example: http://localhost:8080/api/ai/chat?input=What is its core feature?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/chat&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">chatWithMemory</span>(<span style="color:#a6e22e">@RequestParam</span> String input) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> aiService.<span style="color:#a6e22e">chatWithMemory</span>(input);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="43-feature-3-structured-prompts-prompttemplate">4.3 Feature 3: Structured Prompts (PromptTemplate)<a hidden class="anchor" aria-hidden="true" href="#43-feature-3-structured-prompts-prompttemplate">#</a></h3>
+<p>Use <code>PromptTemplate</code> to create reusable, parameterized prompts (e.g., define a &ldquo;role&rdquo; for the LLM).</p>
+<h4 id="431-update-aiservicejava-with-prompttemplate">4.3.1 Update <code>AIService.java</code> with <code>PromptTemplate</code><a hidden class="anchor" aria-hidden="true" href="#431-update-aiservicejava-with-prompttemplate">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.springdevpro.springai.service;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.ChatClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.memory.ChatMemory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.memory.InMemoryChatMemory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.prompt.Prompt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.ai.chat.prompt.PromptTemplate;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Service;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Service</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIService</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... (keep chatClient and chatMemory fields)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... (keep existing methods)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Structured prompt: use a template to define roles/format.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param role LLM&#39;s role (e.g., &#34;senior Java architect&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param question User&#39;s question
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return Formatted LLM response
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">askWithRole</span>(String role, String question) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Define a reusable prompt template</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        String template <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;You are a {role}. Answer the following question clearly and concisely: {question}&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        PromptTemplate promptTemplate <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PromptTemplate(template);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Fill in template parameters</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        promptTemplate.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;role&#34;</span>, role);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        promptTemplate.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;question&#34;</span>, question);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Generate the final prompt and call LLM</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Prompt finalPrompt <span style="color:#f92672">=</span> promptTemplate.<span style="color:#a6e22e">create</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> chatClient.<span style="color:#a6e22e">call</span>(finalPrompt);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="432-add-controller-endpoint-for-structured-prompts">4.3.2 Add Controller Endpoint for Structured Prompts<a hidden class="anchor" aria-hidden="true" href="#432-add-controller-endpoint-for-structured-prompts">#</a></h4>
+<p>Update <code>AIController.java</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/api/ai&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AIController</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... (keep existing code)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * REST API for structured prompts (with role).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * Example: http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\&amp;question=Explain%20Spring%20AI%20injection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/ask-with-role&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">askWithRole</span>(
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@RequestParam</span> String role,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@RequestParam</span> String question
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> aiService.<span style="color:#a6e22e">askWithRole</span>(role, question);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="5-run-and-test-the-application">5. Run and Test the Application<a hidden class="anchor" aria-hidden="true" href="#5-run-and-test-the-application">#</a></h2>
+<h3 id="51-start-the-spring-boot-app">5.1 Start the Spring Boot App<a hidden class="anchor" aria-hidden="true" href="#51-start-the-spring-boot-app">#</a></h3>
+<p>Run the main class (e.g., <code>SpringAiDemoApplication.java</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> com.springdevpro.springai;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.boot.SpringApplication;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootApplication</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpringAiDemoApplication</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        SpringApplication.<span style="color:#a6e22e">run</span>(SpringAiDemoApplication.<span style="color:#a6e22e">class</span>, args);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="52-test-the-apis">5.2 Test the APIs<a hidden class="anchor" aria-hidden="true" href="#52-test-the-apis">#</a></h3>
+<p>Use a browser, Postman, or <code>curl</code> to test the endpoints:</p>
+<h4 id="1-single-turn-question">1. Single-Turn Question<a hidden class="anchor" aria-hidden="true" href="#1-single-turn-question">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#e6db74">&#34;http://localhost:8080/api/ai/ask?question=What is Spring AI?&#34;</span>
+</span></span></code></pre></div><p><strong>Expected Response</strong>:</p>
+<p><code>Spring AI is a library that integrates large language models (LLMs) into Spring Boot applications, simplifying LLM calls with intuitive APIs similar to Spring's data access patterns (e.g., JdbcTemplate). It supports models like OpenAI GPT-3.5/4, Hugging Face, and Azure OpenAI, and includes features for conversation memory, prompt templates, and vector database integration.</code></p>
+<h4 id="2-multi-turn-conversation">2. Multi-Turn Conversation<a hidden class="anchor" aria-hidden="true" href="#2-multi-turn-conversation">#</a></h4>
+<p>First call:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#e6db74">&#34;http://localhost:8080/api/ai/chat?input=What is Spring AI?&#34;</span>
+</span></span></code></pre></div><p>Second call (LLM remembers the first question):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#e6db74">&#34;http://localhost:8080/api/ai/chat?input=How do I integrate it with OpenAI?&#34;</span>
+</span></span></code></pre></div><h4 id="3-structured-prompt-with-role">3. Structured Prompt with Role<a hidden class="anchor" aria-hidden="true" href="#3-structured-prompt-with-role">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl <span style="color:#e6db74">&#34;http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\&amp;question=Explain%20ChatClient%20in%20Spring%20AI&#34;</span>
+</span></span></code></pre></div><h2 id="6-troubleshooting-common-issues">6. Troubleshooting Common Issues<a hidden class="anchor" aria-hidden="true" href="#6-troubleshooting-common-issues">#</a></h2>
+<h3 id="61-api-key-not-found-error">6.1 &ldquo;API Key Not Found&rdquo; Error<a hidden class="anchor" aria-hidden="true" href="#61-api-key-not-found-error">#</a></h3>
+<ul>
+<li>
+<p>Check if <code>application.yml</code> has the correct <code>spring.ai``.openai.api-key</code>.</p>
+</li>
+<li>
+<p>Ensure the <code>.openai</code> file (for Spring CLI) is in your home directory and has no typos.</p>
+</li>
+</ul>
+<h3 id="62-maven-cannot-find-spring-ai-dependencies">6.2 &ldquo;Maven Cannot Find Spring AI Dependencies&rdquo;<a hidden class="anchor" aria-hidden="true" href="#62-maven-cannot-find-spring-ai-dependencies">#</a></h3>
+<ul>
+<li>
+<p>For stable versions: Verify Maven Central is enabled (it’s default in Maven/Gradle).</p>
+</li>
+<li>
+<p>For snapshots: Add the Spring snapshot repositories (see Section 2.1.2).</p>
+</li>
+<li>
+<p>If using a corporate Maven mirror: Modify <code>settings.xml</code> to exclude Spring repositories:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> <span style="color:#f92672">&lt;mirror&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;id&gt;</span>my-mirror <span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;mirrorOf&gt;</span>*,!spring-snapshots,!central-portal-snapshots <span style="color:#f92672">&lt;/mirrorOf&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;url&gt;</span>https://your-corporate-mirror.com/maven <span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/mirror&gt;</span>
+</span></span></code></pre></div><h3 id="63-slow-llm-responses">6.3 Slow LLM Responses<a hidden class="anchor" aria-hidden="true" href="#63-slow-llm-responses">#</a></h3>
+<ul>
+<li>
+<p>Larger models (e.g., GPT-4) take 3-4 minutes for complex requests. Use GPT-3.5-turbo for faster results.</p>
+</li>
+<li>
+<p>Check OpenAI’s API status at <a href="https://status.openai.com/">status.openai.com</a>.</p>
+</li>
+</ul>
+<h2 id="7-next-steps">7. Next Steps<a hidden class="anchor" aria-hidden="true" href="#7-next-steps">#</a></h2>
+<ul>
+<li>
+<p><strong>Vector Databases</strong>: Integrate with Pinecone/Weaviate for retrieval-augmented generation (RAG).</p>
+</li>
+<li>
+<p><strong>Other Models</strong>: Try Hugging Face (e.g., <code>spring-ai-huggingface</code>) or Azure OpenAI.</p>
+</li>
+<li>
+<p><strong>Spring CLI AI Commands</strong>: Use <code>spring ai add &quot;describe functionality&quot;</code> to auto-generate code (see <a href="https://docs.spring.io/spring-cli/reference/0.8/ai-guide.html">Spring CLI AI Guide</a>).</p>
+</li>
+</ul>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ol>
+<li>
+<p><a href="https://docs.spring.io/spring-ai/reference/getting-started.html">Official Spring AI Documentation</a></p>
+</li>
+<li>
+<p><a href="https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-openai-spring-boot-starter">Spring AI OpenAI Starter</a></p>
+</li>
+<li>
+<p><a href="https://platform.openai.com/api-keys">OpenAI API Key Setup</a></p>
+</li>
+<li>
+<p><a href="https://docs.spring.io/spring-cli/reference/0.8/ai-guide.html">Spring CLI AI Commands</a></p>
+</li>
+</ol>
+
 
   </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/spring-ai/">Spring AI</a></li>
-      <li><a href="http://localhost:1313/tags/rag/">RAG</a></li>
-      <li><a href="http://localhost:1313/tags/llm/">LLM</a></li>
-      <li><a href="http://localhost:1313/tags/spring-boot/">Spring Boot</a></li>
+      <li><a href="http://localhost:52672/tags/spring-ai/">Spring AI</a></li>
+      <li><a href="http://localhost:52672/tags/rag/">RAG</a></li>
+      <li><a href="http://localhost:52672/tags/llm/">LLM</a></li>
+      <li><a href="http://localhost:52672/tags/spring-boot/">Spring Boot</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:52672/">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a></span> · 
 
     <span>
         Powered by
@@ -420,6 +929,7 @@ body {
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+
 
   <div id="cookie-popup" style="
   position: fixed;
@@ -450,13 +960,13 @@ body {
       line-height: 1.6;
     ">
       We use cookies to enhance your experience, analyze traffic, and serve personalized ads. By using our site, you agree to our
-      <a href="/cookie-policy/" 
+      <a href="/legal/cookie-policy/" 
          style="color: ; font-weight: 500; text-decoration: none; border-bottom: 1px solid 50;"
          target="_blank">
         Cookie Policy
       </a>
       and
-      <a href="/privacy-policy/" 
+      <a href="/legal/privacy-policy/" 
          style="color: ; font-weight: 500; text-decoration: none; border-bottom: 1px solid 50;"
          target="_blank">
         Privacy Policy
@@ -533,6 +1043,14 @@ body {
       });
     })();
   </script>
+
+
+
+<div style="text-align:center; margin-top: 4px; font-size: 0.9rem; opacity: 0.8;">
+    <a href="/legal/terms-of-service/">Terms</a> |
+    <a href="/legal/privacy-policy/">Privacy</a> |
+    <a href="/legal/cookie-policy/">Cookies</a>
+</div>
 
 
 <script>
