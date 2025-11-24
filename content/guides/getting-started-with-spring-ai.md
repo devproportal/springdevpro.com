@@ -78,67 +78,67 @@ Stable releases are available in Maven Central (no extra repository configuratio
 
 
 ```
-\<!-- Dependency Management: Import Spring AI BOM (unifies versioning) -->
+ <!-- Dependency Management: Import Spring AI BOM (unifies versioning) -->
 
-\<dependencyManagement>
+ <dependencyManagement>
 
-&#x20;   \<dependencies>
+     <dependencies>
 
-&#x20;       \<dependency>
+         <dependency>
 
-&#x20;           \<groupId>org.springframework.ai\</groupId>
+             <groupId>org.springframework.ai </groupId>
 
-&#x20;           \<artifactId>spring-ai-bom\</artifactId>
+             <artifactId>spring-ai-bom </artifactId>
 
-&#x20;           \<version>1.0.0\</version>
+             <version>1.0.0 </version>
 
-&#x20;           \<type>pom\</type>
+             <type>pom </type>
 
-&#x20;           \<scope>import\</scope>
+             <scope>import </scope>
 
-&#x20;       \</dependency>
+         </dependency>
 
-&#x20;   \</dependencies>
+     </dependencies>
 
-\</dependencyManagement>
+ </dependencyManagement>
 
-\<!-- Core Dependencies -->
+ <!-- Core Dependencies -->
 
-\<dependencies>
+ <dependencies>
 
-&#x20;   \<!-- Spring Web -->
+     <!-- Spring Web -->
 
-&#x20;   \<dependency>
+     <dependency>
 
-&#x20;       \<groupId>org.springframework.boot\</groupId>
+         <groupId>org.springframework.boot </groupId>
 
-&#x20;       \<artifactId>spring-boot-starter-web\</artifactId>
+         <artifactId>spring-boot-starter-web </artifactId>
 
-&#x20;   \</dependency>
+     </dependency>
 
-&#x20;   \<!-- Spring AI OpenAI Starter (auto-configures ChatClient) -->
+     <!-- Spring AI OpenAI Starter (auto-configures ChatClient) -->
 
-&#x20;   \<dependency>
+     <dependency>
 
-&#x20;       \<groupId>org.springframework.ai\</groupId>
+         <groupId>org.springframework.ai </groupId>
 
-&#x20;       \<artifactId>spring-ai-openai-spring-boot-starter\</artifactId>
+         <artifactId>spring-ai-openai-spring-boot-starter </artifactId>
 
-&#x20;   \</dependency>
+     </dependency>
 
-&#x20;   \<!-- Lombok (Optional) -->
+     <!-- Lombok (Optional) -->
 
-&#x20;   \<dependency>
+     <dependency>
 
-&#x20;       \<groupId>org.projectlombok\</groupId>
+         <groupId>org.projectlombok </groupId>
 
-&#x20;       \<artifactId>lombok\</artifactId>
+         <artifactId>lombok </artifactId>
 
-&#x20;       \<optional>true\</optional>
+         <optional>true </optional>
 
-&#x20;   \</dependency>
+     </dependency>
 
-\</dependencies>
+ </dependencies>
 ```
 
 #### 2.1.2 Snapshot/Milestone Versions (Before 1.0.0)
@@ -148,75 +148,75 @@ For development versions (e.g., `1.1.0-SNAPSHOT`), add Spring snapshot repositor
 
 
 ```
-\<repositories>
+ <repositories>
 
-&#x20;   \<!-- Spring Snapshot Repository -->
+     <!-- Spring Snapshot Repository -->
 
-&#x20;   \<repository>
+     <repository>
 
-&#x20;       \<id>spring-snapshots\</id>
+         <id>spring-snapshots </id>
 
-&#x20;       \<name>Spring Snapshots\</name>
+         <name>Spring Snapshots </name>
 
-&#x20;       \<url>https://repo.spring.io/snapshot\</url>
+         <url>https://repo.spring.io/snapshot </url>
 
-&#x20;       \<releases>
+         <releases>
 
-&#x20;           \<enabled>false\</enabled>
+             <enabled>false </enabled>
 
-&#x20;       \</releases>
+         </releases>
 
-&#x20;   \</repository>
+     </repository>
 
-&#x20;   \<!-- Central Portal Snapshot Repository -->
+     <!-- Central Portal Snapshot Repository -->
 
-&#x20;   \<repository>
+     <repository>
 
-&#x20;       \<id>central-portal-snapshots\</id>
+         <id>central-portal-snapshots </id>
 
-&#x20;       \<name>Central Portal Snapshots\</name>
+         <name>Central Portal Snapshots </name>
 
-&#x20;       \<url>https://central.sonatype.com/repository/maven-snapshots/\</url>
+         <url>https://central.sonatype.com/repository/maven-snapshots/ </url>
 
-&#x20;       \<releases>
+         <releases>
 
-&#x20;           \<enabled>false\</enabled>
+             <enabled>false </enabled>
 
-&#x20;       \</releases>
+         </releases>
 
-&#x20;       \<snapshots>
+         <snapshots>
 
-&#x20;           \<enabled>true\</enabled>
+             <enabled>true </enabled>
 
-&#x20;       \</snapshots>
+         </snapshots>
 
-&#x20;   \</repository>
+     </repository>
 
-\</repositories>
+ </repositories>
 
-\<!-- Update BOM version to snapshot -->
+ <!-- Update BOM version to snapshot -->
 
-\<dependencyManagement>
+ <dependencyManagement>
 
-&#x20;   \<dependencies>
+     <dependencies>
 
-&#x20;       \<dependency>
+         <dependency>
 
-&#x20;           \<groupId>org.springframework.ai\</groupId>
+             <groupId>org.springframework.ai </groupId>
 
-&#x20;           \<artifactId>spring-ai-bom\</artifactId>
+             <artifactId>spring-ai-bom </artifactId>
 
-&#x20;           \<version>1.1.0-SNAPSHOT\</version>
+             <version>1.1.0-SNAPSHOT </version>
 
-&#x20;           \<type>pom\</type>
+             <type>pom </type>
 
-&#x20;           \<scope>import\</scope>
+             <scope>import </scope>
 
-&#x20;       \</dependency>
+         </dependency>
 
-&#x20;   \</dependencies>
+     </dependencies>
 
-\</dependencyManagement>
+ </dependencyManagement>
 ```
 
 ### 2.2 Gradle (`build.gradle`)
@@ -228,27 +228,27 @@ For development versions (e.g., `1.1.0-SNAPSHOT`), add Spring snapshot repositor
 
 dependencies {
 
-&#x20;   implementation platform("org.springframework.ai:spring-ai-bom:1.0.0")
+    implementation platform("org.springframework.ai:spring-ai-bom:1.0.0")
 
-&#x20;  &#x20;
+    
 
-&#x20;   // Spring Web
+    // Spring Web
 
-&#x20;   implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
-&#x20;  &#x20;
+    
 
-&#x20;   // Spring AI OpenAI
+    // Spring AI OpenAI
 
-&#x20;   implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
 
-&#x20;  &#x20;
+    
 
-&#x20;   // Lombok (Optional)
+    // Lombok (Optional)
 
-&#x20;   compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
 
-&#x20;   annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
 }
 
@@ -256,17 +256,17 @@ dependencies {
 
 repositories {
 
-&#x20;   mavenCentral()
+    mavenCentral()
 
-&#x20;   maven { url 'https://repo.spring.io/snapshot' }
+    maven { url 'https://repo.spring.io/snapshot' }
 
-&#x20;   maven {
+    maven {
 
-&#x20;       name = 'Central Portal Snapshots'
+        name = 'Central Portal Snapshots'
 
-&#x20;       url = 'https://central.sonatype.com/repository/maven-snapshots/'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
 
-&#x20;   }
+    }
 
 }
 ```
@@ -282,21 +282,21 @@ Spring AI needs your OpenAI API Key to communicate with OpenAI’s services. Con
 ```
 spring:
 
-&#x20; ai:
+  ai:
 
-&#x20;   openai:
+    openai:
 
-&#x20;     api-key: "sk-your-openai-api-key-here"  # Replace with your actual key
+      api-key: "sk-your-openai-api-key-here"  # Replace with your actual key
 
-&#x20;     base-url: "https://api.openai.com/v1"   # Default OpenAI API endpoint
+      base-url: "https://api.openai.com/v1"   # Default OpenAI API endpoint
 
-&#x20;   chat:
+    chat:
 
-&#x20;     options:
+      options:
 
-&#x20;       model: "gpt-4"  # Use "gpt-3.5-turbo" for lower cost
+        model: "gpt-4"  # Use "gpt-3.5-turbo" for lower cost
 
-&#x20;       temperature: 0.7  # Controls randomness (0 = precise, 1 = creative)
+        temperature: 0.7  # Controls randomness (0 = precise, 1 = creative)
 ```
 
 ### 3.2 Alternative: Use a `.openai` File (For Spring CLI)
@@ -340,35 +340,35 @@ import org.springframework.stereotype.Service;
 
 public class AIService {
 
-&#x20;   // ChatClient is auto-configured by Spring AI OpenAI Starter
+    // ChatClient is auto-configured by Spring AI OpenAI Starter
 
-&#x20;   private final ChatClient chatClient;
+    private final ChatClient chatClient;
 
-&#x20;   // Constructor injection (no @Autowired needed in Spring 4.3+)
+    // Constructor injection (no @Autowired needed in Spring 4.3+)
 
-&#x20;   public AIService(ChatClient chatClient) {
+    public AIService(ChatClient chatClient) {
 
-&#x20;       this.chatClient = chatClient;
+        this.chatClient = chatClient;
 
-&#x20;   }
+    }
 
-&#x20;   /\*\*
+    /**
 
-&#x20;    \* Send a single question to OpenAI and return the response.
+     * Send a single question to OpenAI and return the response.
 
-&#x20;    \* @param question User's question
+     * @param question User's question
 
-&#x20;    \* @return LLM-generated response
+     * @return LLM-generated response
 
-&#x20;    \*/
+     */
 
-&#x20;   public String askSingleQuestion(String question) {
+    public String askSingleQuestion(String question) {
 
-&#x20;       // Use chatClient.call() for simple one-way calls
+        // Use chatClient.call() for simple one-way calls
 
-&#x20;       return chatClient.call(question);
+        return chatClient.call(question);
 
-&#x20;   }
+    }
 
 }
 ```
@@ -396,29 +396,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class AIController {
 
-&#x20;   private final AIService aiService;
+    private final AIService aiService;
 
-&#x20;   public AIController(AIService aiService) {
+    public AIController(AIService aiService) {
 
-&#x20;       this.aiService = aiService;
+        this.aiService = aiService;
 
-&#x20;   }
+    }
 
-&#x20;   /\*\*
+    /**
 
-&#x20;    \* REST API for single-turn question-answering.
+     * REST API for single-turn question-answering.
 
-&#x20;    \* Example: http://localhost:8080/api/ai/ask?question=What is Spring AI?
+     * Example: http://localhost:8080/api/ai/ask?question=What is Spring AI?
 
-&#x20;    \*/
+     */
 
-&#x20;   @GetMapping("/ask")
+    @GetMapping("/ask")
 
-&#x20;   public String askQuestion(@RequestParam String question) {
+    public String askQuestion(@RequestParam String question) {
 
-&#x20;       return aiService.askSingleQuestion(question);
+        return aiService.askSingleQuestion(question);
 
-&#x20;   }
+    }
 
 }
 ```
@@ -434,15 +434,15 @@ First, add the `spring-ai-memory-in-memory` dependency (already included in the 
 
 
 ```
-\<!-- Maven (if missing) -->
+ <!-- Maven (if missing) -->
 
-\<dependency>
+ <dependency>
 
-&#x20;   \<groupId>org.springframework.ai\</groupId>
+     <groupId>org.springframework.ai </groupId>
 
-&#x20;   \<artifactId>spring-ai-memory-in-memory\</artifactId>
+     <artifactId>spring-ai-memory-in-memory </artifactId>
 
-\</dependency>
+ </dependency>
 ```
 
 
@@ -474,51 +474,51 @@ import org.springframework.stereotype.Service;
 
 public class AIService {
 
-&#x20;   private final ChatClient chatClient;
+    private final ChatClient chatClient;
 
-&#x20;   private final ChatMemory chatMemory;  // Stores conversation history
+    private final ChatMemory chatMemory;  // Stores conversation history
 
-&#x20;   public AIService(ChatClient chatClient) {
+    public AIService(ChatClient chatClient) {
 
-&#x20;       this.chatClient = chatClient;
+        this.chatClient = chatClient;
 
-&#x20;       // Initialize in-memory chat memory (use Redis for distributed apps)
+        // Initialize in-memory chat memory (use Redis for distributed apps)
 
-&#x20;       this.chatMemory = new InMemoryChatMemory();
+        this.chatMemory = new InMemoryChatMemory();
 
-&#x20;   }
+    }
 
-&#x20;   // ... (keep askSingleQuestion method)
+    // ... (keep askSingleQuestion method)
 
-&#x20;   /\*\*
+    /**
 
-&#x20;    \* Multi-turn conversation: remembers previous messages.
+     * Multi-turn conversation: remembers previous messages.
 
-&#x20;    \* @param userInput User's new message
+     * @param userInput User's new message
 
-&#x20;    \* @return LLM response (considers history)
+     * @return LLM response (considers history)
 
-&#x20;    \*/
+     */
 
-&#x20;   public String chatWithMemory(String userInput) {
+    public String chatWithMemory(String userInput) {
 
-&#x20;       // 1. Add user's new input to memory
+        // 1. Add user's new input to memory
 
-&#x20;       Prompt userPrompt = new Prompt(userInput);
+        Prompt userPrompt = new Prompt(userInput);
 
-&#x20;       chatMemory.add(userPrompt);
+        chatMemory.add(userPrompt);
 
-&#x20;       // 2. Send full conversation history to LLM
+        // 2. Send full conversation history to LLM
 
-&#x20;       String llmResponse = chatClient.call(chatMemory.get());
+        String llmResponse = chatClient.call(chatMemory.get());
 
-&#x20;       // 3. Add LLM's response to memory for next turns
+        // 3. Add LLM's response to memory for next turns
 
-&#x20;       chatMemory.add(new Prompt(llmResponse));
+        chatMemory.add(new Prompt(llmResponse));
 
-&#x20;       return llmResponse;
+        return llmResponse;
 
-&#x20;   }
+    }
 
 }
 ```
@@ -536,23 +536,23 @@ Update `AIController.java`:
 
 public class AIController {
 
-&#x20;   // ... (keep existing code)
+    // ... (keep existing code)
 
-&#x20;   /\*\*
+    /**
 
-&#x20;    \* REST API for multi-turn conversation.
+     * REST API for multi-turn conversation.
 
-&#x20;    \* Example: http://localhost:8080/api/ai/chat?input=What is its core feature?
+     * Example: http://localhost:8080/api/ai/chat?input=What is its core feature?
 
-&#x20;    \*/
+     */
 
-&#x20;   @GetMapping("/chat")
+    @GetMapping("/chat")
 
-&#x20;   public String chatWithMemory(@RequestParam String input) {
+    public String chatWithMemory(@RequestParam String input) {
 
-&#x20;       return aiService.chatWithMemory(input);
+        return aiService.chatWithMemory(input);
 
-&#x20;   }
+    }
 
 }
 ```
@@ -584,43 +584,43 @@ import org.springframework.stereotype.Service;
 
 public class AIService {
 
-&#x20;   // ... (keep chatClient and chatMemory fields)
+    // ... (keep chatClient and chatMemory fields)
 
-&#x20;   // ... (keep existing methods)
+    // ... (keep existing methods)
 
-&#x20;   /\*\*
+    /**
 
-&#x20;    \* Structured prompt: use a template to define roles/format.
+     * Structured prompt: use a template to define roles/format.
 
-&#x20;    \* @param role LLM's role (e.g., "senior Java architect")
+     * @param role LLM's role (e.g., "senior Java architect")
 
-&#x20;    \* @param question User's question
+     * @param question User's question
 
-&#x20;    \* @return Formatted LLM response
+     * @return Formatted LLM response
 
-&#x20;    \*/
+     */
 
-&#x20;   public String askWithRole(String role, String question) {
+    public String askWithRole(String role, String question) {
 
-&#x20;       // Define a reusable prompt template
+        // Define a reusable prompt template
 
-&#x20;       String template = "You are a {role}. Answer the following question clearly and concisely: {question}";
+        String template = "You are a {role}. Answer the following question clearly and concisely: {question}";
 
-&#x20;       PromptTemplate promptTemplate = new PromptTemplate(template);
+        PromptTemplate promptTemplate = new PromptTemplate(template);
 
-&#x20;       // Fill in template parameters
+        // Fill in template parameters
 
-&#x20;       promptTemplate.add("role", role);
+        promptTemplate.add("role", role);
 
-&#x20;       promptTemplate.add("question", question);
+        promptTemplate.add("question", question);
 
-&#x20;       // Generate the final prompt and call LLM
+        // Generate the final prompt and call LLM
 
-&#x20;       Prompt finalPrompt = promptTemplate.create();
+        Prompt finalPrompt = promptTemplate.create();
 
-&#x20;       return chatClient.call(finalPrompt);
+        return chatClient.call(finalPrompt);
 
-&#x20;   }
+    }
 
 }
 ```
@@ -638,29 +638,29 @@ Update `AIController.java`:
 
 public class AIController {
 
-&#x20;   // ... (keep existing code)
+    // ... (keep existing code)
 
-&#x20;   /\*\*
+    /**
 
-&#x20;    \* REST API for structured prompts (with role).
+     * REST API for structured prompts (with role).
 
-&#x20;    \* Example: http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\&question=Explain%20Spring%20AI%20injection
+     * Example: http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\&question=Explain%20Spring%20AI%20injection
 
-&#x20;    \*/
+     */
 
-&#x20;   @GetMapping("/ask-with-role")
+    @GetMapping("/ask-with-role")
 
-&#x20;   public String askWithRole(
+    public String askWithRole(
 
-&#x20;           @RequestParam String role,
+            @RequestParam String role,
 
-&#x20;           @RequestParam String question
+            @RequestParam String question
 
-&#x20;   ) {
+    ) {
 
-&#x20;       return aiService.askWithRole(role, question);
+        return aiService.askWithRole(role, question);
 
-&#x20;   }
+    }
 
 }
 ```
@@ -684,11 +684,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class SpringAiDemoApplication {
 
-&#x20;   public static void main(String\[] args) {
+    public static void main(String\[] args) {
 
-&#x20;       SpringApplication.run(SpringAiDemoApplication.class, args);
+        SpringApplication.run(SpringAiDemoApplication.class, args);
 
-&#x20;   }
+    }
 
 }
 ```
@@ -758,15 +758,15 @@ curl "http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\
 
 
 ```
-\<mirror>
+ <mirror>
 
-&#x20;   \<id>my-mirror\</id>
+     <id>my-mirror </id>
 
-&#x20;   \<mirrorOf>\*,!spring-snapshots,!central-portal-snapshots\</mirrorOf>
+     <mirrorOf>*,!spring-snapshots,!central-portal-snapshots </mirrorOf>
 
-&#x20;   \<url>https://your-corporate-mirror.com/maven\</url>
+     <url>https://your-corporate-mirror.com/maven </url>
 
-\</mirror>
+ </mirror>
 ```
 
 ### 6.3 Slow LLM Responses
