@@ -2,67 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:52672/legal/</loc>
+    <loc>https://springdevpro.com/legal/</loc>
     <lastmod>2025-11-24T10:32:04+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/</loc>
-    <lastmod>2025-11-24T10:32:04+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/legal/terms-of-service/</loc>
-    <lastmod>2025-11-24T10:32:04+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/legal/privacy-policy/</loc>
-    <lastmod>2025-11-24T10:31:54+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/guides/</loc>
-    <lastmod>2025-11-24T10:31:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/legal/cookie-policy/</loc>
-    <lastmod>2025-11-24T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/guides/getting-started-with-spring-ai/</loc>
-    <lastmod>2025-01-15T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/tags/llm/</loc>
-    <lastmod>2025-01-15T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/tags/rag/</loc>
-    <lastmod>2025-01-15T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/tags/spring-ai/</loc>
-    <lastmod>2025-01-15T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/tags/spring-boot/</loc>
-    <lastmod>2025-01-15T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/tags/</loc>
-    <lastmod>2025-01-15T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url><url>
-    <loc>http://localhost:52672/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

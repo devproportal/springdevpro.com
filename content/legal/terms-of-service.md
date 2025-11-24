@@ -7,8 +7,6 @@ layout: "single"
 hidden: true
 ---
 
-# Terms of Service for [springdevpro.com](https://springdevpro.com)
-
 **Effective Date**: November 24, 2025
 
 **Applicable To**: [springdevpro.com](https://springdevpro.com) (a professional Spring AI technical blog, hereinafter referred to as "the Site")

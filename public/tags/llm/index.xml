@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>LLM on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
-    <link>http://localhost:52672/tags/llm/</link>
+    <link>https://springdevpro.com/tags/llm/</link>
     <description>Recent content in LLM on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</description>
     <image>
       <title>SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
-      <url>http://localhost:52672/images/spring-ai-banner.jpg</url>
-      <link>http://localhost:52672/images/spring-ai-banner.jpg</link>
+      <url>https://springdevpro.com/images/spring-ai-banner.jpg</url>
+      <link>https://springdevpro.com/images/spring-ai-banner.jpg</link>
     </image>
     <generator>Hugo -- 0.149.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Jan 2025 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:52672/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://springdevpro.com/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started with Spring AI: A Complete Step-by-Step Guide</title>
-      <link>http://localhost:52672/guides/getting-started-with-spring-ai/</link>
+      <link>https://springdevpro.com/guides/getting-started-with-spring-ai/</link>
       <pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:52672/guides/getting-started-with-spring-ai/</guid>
+      <guid>https://springdevpro.com/guides/getting-started-with-spring-ai/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;Spring AI is a powerful library that integrates large language models (LLMs) like OpenAI, Hugging Face, and Azure OpenAI into Spring Boot applications. It simplifies LLM calls to be as intuitive as operating a database (similar to &lt;code&gt;JdbcTemplate&lt;/code&gt;), enabling developers to quickly build intelligent features like chatbots, question-answering systems, and content generators.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;

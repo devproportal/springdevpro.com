@@ -2,43 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
-    <link>http://localhost:52672/tags/</link>
+    <link>https://springdevpro.com/tags/</link>
     <description>Recent content in Tags on SpringDevPro - Master Spring AI &amp; Spring Ecosystem</description>
     <image>
       <title>SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
-      <url>http://localhost:52672/images/spring-ai-banner.jpg</url>
-      <link>http://localhost:52672/images/spring-ai-banner.jpg</link>
+      <url>https://springdevpro.com/images/spring-ai-banner.jpg</url>
+      <link>https://springdevpro.com/images/spring-ai-banner.jpg</link>
     </image>
     <generator>Hugo -- 0.149.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Jan 2025 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:52672/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://springdevpro.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LLM</title>
-      <link>http://localhost:52672/tags/llm/</link>
+      <link>https://springdevpro.com/tags/llm/</link>
       <pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:52672/tags/llm/</guid>
+      <guid>https://springdevpro.com/tags/llm/</guid>
       <description></description>
     </item>
     <item>
       <title>RAG</title>
-      <link>http://localhost:52672/tags/rag/</link>
+      <link>https://springdevpro.com/tags/rag/</link>
       <pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:52672/tags/rag/</guid>
+      <guid>https://springdevpro.com/tags/rag/</guid>
       <description></description>
     </item>
     <item>
       <title>Spring AI</title>
-      <link>http://localhost:52672/tags/spring-ai/</link>
+      <link>https://springdevpro.com/tags/spring-ai/</link>
       <pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:52672/tags/spring-ai/</guid>
+      <guid>https://springdevpro.com/tags/spring-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Spring Boot</title>
-      <link>http://localhost:52672/tags/spring-boot/</link>
+      <link>https://springdevpro.com/tags/spring-boot/</link>
       <pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate>
-      <guid>http://localhost:52672/tags/spring-boot/</guid>
+      <guid>https://springdevpro.com/tags/spring-boot/</guid>
       <description></description>
     </item>
   </channel>
