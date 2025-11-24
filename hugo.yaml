@@ -1,30 +1,23 @@
 baseURL: "https://springdevpro.com/"
-languageCode: "en-us"  # 面向欧美用户，默认英文
+languageCode: "en-us"
 title: "SpringDevPro - Master Spring AI & Spring Ecosystem"
-theme: []  # 依赖共享模块，无需额外主题
-enableRobotsTXT: true  # 启用 robots.txt，SEO 必备
-googleAnalytics: "G-XXX"  # 绑定 Google Analytics 4（欧美用户数据分析）
+theme: "PaperMod"  # 启用 PaperMod 主题（方式1用这个）
+# theme: ["github.com/adityatelange/hugo-PaperMod"]  # 方式2（Hugo Modules）用这个
 
-# 引入共享模块（关键：复用主站公共组件）
-# module:
-#   imports:
-#     - path: github.com/devproportal/hugo-shared-module  # 共享模块仓库地址
-#       mounts:
-#         - source: layouts/partials
-#           target: layouts/partials/shared  # 公共组件路径：shared/xxx.html
-#         - source: assets/scss
-#           target: assets/scss/shared  # 公共样式路径：shared/xxx.scss
-#         - source: config/_default
-#           target: config/_default/shared  # 公共配置路径
-
-# 站点专属配置（Spring AI 特色）
+# 主题核心配置（PaperMod 专属参数，控制布局/功能）
 params:
-  # 站点标识（用于导航栏/标题）
-  siteName: "SpringDevPro"
-  siteTagline: "Practical Spring AI & Spring Boot Tutorials for Developers"
-  logo: "images/spring-dev-pro-logo.svg"  # 站点专属Logo（放在 assets/images/）
-  primaryColor: "#2E7D32"  # Spring 品牌绿色，专属配色
-  # 导航菜单（结合共享导航栏，添加专属栏目）
+  # 站点基础信息
+  title: "SpringDevPro"
+  description: "Practical Spring AI & Spring Boot Tutorials for Developers"
+  author: "SpringDevPro Team"
+  images: ["images/spring-ai-banner.jpg"]  # 社交分享默认图片（放在 assets/images/）
+  
+  # 布局配置
+  layout: "single"  # 文章页默认布局
+  darkMode: "auto"  # 自动切换明暗模式（欧美用户偏好）
+  disableThemeToggle: false  # 启用明暗模式切换按钮
+  
+  # 导航菜单（对接 PaperMod 导航栏，保留你的栏目）
   mainMenu:
     - name: "Home"
       url: "/"
@@ -41,22 +34,41 @@ params:
     - name: "Resources"
       url: "/resources/"
       weight: 5
-  # AdSense 配置（共享模块会自动读取）
+    - name: "Privacy Policy"
+      url: "/privacy-policy/"
+      weight: 6
+  
+  # SEO 优化（PaperMod 原生支持）
+  seo:
+    disableTitleSuffix: false
+    titleSeparator: "-"
+  
+  # 代码高亮配置（适配 Spring/Java 代码）
+  code:
+    copyButton: true  # 显示代码复制按钮（欧美用户常用）
+    highlight:
+      theme: "github-dark"  # 代码高亮主题（暗色更友好）
+  
+  # 你的专属配置（AdSense、GDPR）
   adsense:
-    publisherId: "ca-pub-XXX"  # 替换为你的 AdSense 发布者ID
-    adSlot1: "XXX"  # 顶部横幅广告位ID
-    adSlot2: "XXX"  # 文章内广告位ID
-  # GDPR 合规配置（共享 Cookie 弹窗使用）
+    publisherId: "ca-pub-XXX"  # 替换为你的 AdSense ID
+    adSlotTop: "XXX"  # 顶部广告位 ID
+    adSlotInContent: "XXX"  # 文章内广告位 ID
   gdpr:
-    cookiePolicyUrl: "/privacy-policy/"
+    cookiePolicyUrl: "/cookie-policy/"
     acceptButtonText: "Accept Cookies"
     declineButtonText: "Decline Non-Necessary"
 
-# 站点地图配置（SEO 必备，自动生成）
+# 站点地图配置（保留）
 sitemap:
   changefreq: "weekly"
   priority: 0.7
 
-# 输出配置（确保静态资源正确生成）
+# 输出配置（保留）
 outputs:
   home: ["HTML", "RSS", "SITEMAP"]
+
+#  taxonomies（分类/标签功能，PaperMod 自动支持）
+taxonomies:
+  tag: "tags"
+  category: "categories"
