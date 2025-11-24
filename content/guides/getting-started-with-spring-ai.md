@@ -77,7 +77,7 @@ Stable releases are available in Maven Central (no extra repository configuratio
 
 
 
-```
+```xml
  <!-- Dependency Management: Import Spring AI BOM (unifies versioning) -->
 
  <dependencyManagement>
@@ -147,7 +147,7 @@ For development versions (e.g., `1.1.0-SNAPSHOT`), add Spring snapshot repositor
 
 
 
-```
+```xml
  <repositories>
 
      <!-- Spring Snapshot Repository -->
@@ -223,7 +223,7 @@ For development versions (e.g., `1.1.0-SNAPSHOT`), add Spring snapshot repositor
 
 
 
-```
+```java
 // Dependency Management: Import Spring AI BOM
 
 dependencies {
@@ -279,7 +279,7 @@ Spring AI needs your OpenAI API Key to communicate with OpenAI’s services. Con
 
 
 
-```
+```yaml
 spring:
 
   ai:
@@ -329,7 +329,7 @@ Create a **service** to wrap `ChatClient` (Spring AI’s core interface for LLM 
 
 
 
-```
+```java
 package com.springdevpro.springai.service;
 
 import org.springframework.ai.chat.ChatClient;
@@ -377,7 +377,7 @@ public class AIService {
 
 
 
-```
+```java
 package com.springdevpro.springai.controller;
 
 import com.springdevpro.springai.service.AIService;
@@ -433,7 +433,7 @@ First, add the `spring-ai-memory-in-memory` dependency (already included in the 
 
 
 
-```
+```xml
  <!-- Maven (if missing) -->
 
  <dependency>
@@ -447,7 +447,7 @@ First, add the `spring-ai-memory-in-memory` dependency (already included in the 
 
 
 
-```
+```java
 // Gradle (if missing)
 
 implementation 'org.springframework.ai:spring-ai-memory-in-memory'
@@ -457,7 +457,7 @@ implementation 'org.springframework.ai:spring-ai-memory-in-memory'
 
 
 
-```
+```java
 package com.springdevpro.springai.service;
 
 import org.springframework.ai.chat.ChatClient;
@@ -529,7 +529,7 @@ Update `AIController.java`:
 
 
 
-```
+```java
 @RestController
 
 @RequestMapping("/api/ai")
@@ -565,7 +565,7 @@ Use `PromptTemplate` to create reusable, parameterized prompts (e.g., define a "
 
 
 
-```
+```java
 package com.springdevpro.springai.service;
 
 import org.springframework.ai.chat.ChatClient;
@@ -631,7 +631,7 @@ Update `AIController.java`:
 
 
 
-```
+```java
 @RestController
 
 @RequestMapping("/api/ai")
@@ -673,7 +673,7 @@ Run the main class (e.g., `SpringAiDemoApplication.java`):
 
 
 
-```
+```java
 package com.springdevpro.springai;
 
 import org.springframework.boot.SpringApplication;
@@ -701,7 +701,7 @@ Use a browser, Postman, or `curl` to test the endpoints:
 
 
 
-```
+```bash
 curl "http://localhost:8080/api/ai/ask?question=What is Spring AI?"
 ```
 
@@ -715,7 +715,7 @@ First call:
 
 
 
-```
+```bash
 curl "http://localhost:8080/api/ai/chat?input=What is Spring AI?"
 ```
 
@@ -723,7 +723,7 @@ Second call (LLM remembers the first question):
 
 
 
-```
+```bash
 curl "http://localhost:8080/api/ai/chat?input=How do I integrate it with OpenAI?"
 ```
 
@@ -731,7 +731,7 @@ curl "http://localhost:8080/api/ai/chat?input=How do I integrate it with OpenAI?
 
 
 
-```
+```bash
 curl "http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\&question=Explain%20ChatClient%20in%20Spring%20AI"
 ```
 
@@ -757,15 +757,11 @@ curl "http://localhost:8080/api/ai/ask-with-role?role=senior%20Java%20architect\
 
 
 
-```
+```xml
  <mirror>
-
      <id>my-mirror </id>
-
      <mirrorOf>*,!spring-snapshots,!central-portal-snapshots </mirrorOf>
-
      <url>https://your-corporate-mirror.com/maven </url>
-
  </mirror>
 ```
 
