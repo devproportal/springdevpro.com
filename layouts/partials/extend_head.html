@@ -1,0 +1,58 @@
+<style>
+/* 1. 基础配色变量 */
+:root {
+  --primary: #2E7D32 !important;        /* Spring绿 */
+  --primary-light: #4CAF50 !important;  /* 浅Spring绿 */
+  --primary-dark: #1B5E20 !important;   /* 深Spring绿 */
+  --text: #333333 !important;           /* 浅色文本 */
+  --background: #ffffff !important;     /* 浅色背景 */
+}
+[data-theme="dark"] {
+  --primary: #81C784 !important;        /* 暗色模式主色 */
+  --primary-light: #A5D6A7 !important;
+  --primary-dark: #66BB6A !important;
+  --text: #E0E0E0 !important;           /* 暗色文本 */
+  --background: #121212 !important;     /* 暗色背景 */
+}
+
+/* 2. 强制覆盖导航栏 */
+.navbar {
+  background-color: var(--primary-dark) !important;
+}
+.menu-item a {
+  color: white !important;
+}
+.menu-item a:hover {
+  color: var(--primary-light) !important;
+}
+
+/* 3. 强制覆盖链接 */
+a {
+  color: var(--primary) !important;
+  border-bottom-color: var(--primary)30 !important;
+}
+a:hover {
+  color: var(--primary-dark) !important;
+}
+
+/* 4. 强制覆盖按钮 */
+#accept-all-cookies {
+  background-color: var(--primary) !important;
+  color: white !important;
+}
+#accept-all-cookies:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+/* 5. 强制覆盖文章标题 */
+.post-title {
+  color: var(--primary-dark) !important;
+  border-bottom-color: var(--primary-light) !important;
+}
+
+/* 6. 强制覆盖页面背景/文本 */
+body {
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+}
+</style>

@@ -1,0 +1,14 @@
+{{ if .Site.Params.adsense.publisherId }}
+  <div class="adsense-slot my-6 text-center">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.adsense.publisherId }}" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="{{ .Site.Params.adsense.publisherId }}"
+         data-ad-slot="{{ .Site.Params.adsense.adSlotTop }}"
+         data-ad-format="fluid"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+{{ end }}

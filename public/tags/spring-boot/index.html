@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Spring Boot | SpringDevPro - Master Spring AI &amp; Spring Ecosystem</title>
+<meta name="keywords" content="">
+<meta name="description" content="Practical Spring AI &amp; Spring Boot Tutorials for Developers">
+<meta name="author" content="SpringDevPro Team">
+<link rel="canonical" href="http://localhost:1313/tags/spring-boot/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css" integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/spring-boot/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/spring-boot/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><style>
+ 
+:root {
+  --primary: #2E7D32 !important;         
+  --primary-light: #4CAF50 !important;   
+  --primary-dark: #1B5E20 !important;    
+  --text: #333333 !important;            
+  --background: #ffffff !important;      
+}
+[data-theme="dark"] {
+  --primary: #81C784 !important;         
+  --primary-light: #A5D6A7 !important;
+  --primary-dark: #66BB6A !important;
+  --text: #E0E0E0 !important;            
+  --background: #121212 !important;      
+}
+
+ 
+.navbar {
+  background-color: var(--primary-dark) !important;
+}
+.menu-item a {
+  color: white !important;
+}
+.menu-item a:hover {
+  color: var(--primary-light) !important;
+}
+
+ 
+a {
+  color: var(--primary) !important;
+  border-bottom-color: var(--primary)30 !important;
+}
+a:hover {
+  color: var(--primary-dark) !important;
+}
+
+ 
+#accept-all-cookies {
+  background-color: var(--primary) !important;
+  color: white !important;
+}
+#accept-all-cookies:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+ 
+.post-title {
+  color: var(--primary-dark) !important;
+  border-bottom-color: var(--primary-light) !important;
+}
+
+ 
+body {
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+}
+</style>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="SpringDevPro - Master Spring AI &amp; Spring Ecosystem (Alt + H)">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Spring Boot
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Getting Started with Spring AI: Build Your First RAG Application
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Spring AI simplifies integrating LLMs (Large Language Models) and AI tools into Spring Boot applications. In this tutorial, you’ll build a basic RAG (Retrieval-Augmented Generation) app using Spring AI, OpenAI, and Pinecone.
+Prerequisites Java 17&#43; Spring Boot 3.2&#43; OpenAI API Key (get from OpenAI Platform) Pinecone API Key and Index (create from Pinecone Console) Step 1: Add Spring AI Dependencies Add the following dependencies to your pom.xml (Maven) or build.gradle (Gradle):
+&lt;!-- Spring AI Core --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt; &lt;artifactId&gt;spring-ai-core&lt;/artifactId&gt; &lt;version&gt;1.0.0-M1&lt;/version&gt; &lt;/dependency&gt; &lt;!-- OpenAI Integration --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt; &lt;artifactId&gt;spring-ai-openai&lt;/artifactId&gt; &lt;version&gt;1.0.0-M1&lt;/version&gt; &lt;/dependency&gt; &lt;!-- Pinecone Vector DB --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt; &lt;artifactId&gt;spring-ai-pinecone&lt;/artifactId&gt; &lt;version&gt;1.0.0-M1&lt;/version&gt; &lt;/dependency&gt; Step 2: Configure Application Properties Add the following to src/main/resources/application.properties: properties # OpenAI Configuration spring.ai.openai.api-key=sk-your-openai-api-key spring.ai.openai.chat.model=gpt-3.5-turbo # Pinecone Configuration spring.ai.pinecone.api-key=your-pinecone-api-key spring.ai.pinecone.environment=gcp-starter spring.ai.pinecone.index-name=spring-ai-rag-demo Step 3: Build the RAG Service Create a RagService class to handle retrieval and generation: java 运行 import org.springframework.ai.openai.OpenAiChatClient; import org.springframework.ai.pinecone.PineconeVectorStore; import org.springframework.ai.search.service.SearchService; import org.springframework.stereotype.Service; @Service public class RagService { private final OpenAiChatClient chatClient; private final SearchService searchService; public RagService(OpenAiChatClient chatClient, PineconeVectorStore vectorStore) { this.chatClient = chatClient; this.searchService = new SearchService(vectorStore); } public String generateResponse(String userQuery) { // 1. Retrieve relevant documents from Pinecone var retrievedDocs = searchService.search(userQuery, 3); // 2. Build prompt with retrieved documents var prompt = String.format( &#34;Answer the user query using the following context:\n%s\n\nUser Query: %s&#34;, retrievedDocs.getContent(), userQuery ); // 3. Generate response with OpenAI return chatClient.call(prompt); } } Step 4: Create a REST Controller Expose the RAG service via a REST endpoint: java 运行 import org.springframework.web.bind.annotation.GetMapping; import org.springframework.web.bind.annotation.RequestParam; import org.springframework.web.bind.annotation.RestController; @RestController public class RagController { private final RagService ragService; public RagController(RagService ragService) { this.ragService = ragService; } @GetMapping(&#34;/api/rag&#34;) public String getRagResponse(@RequestParam String query) { return ragService.generateResponse(query); } } Step 5: Test the Application Run the Spring Boot app and test the endpoint with curl: bash 运行 curl &#34;http://localhost:8080/api/rag?query=What is Spring AI?&#34; You&#39;ll get a response generated using the retrieved context from Pinecone and OpenAI&#39;s LLM! Next Steps Add document ingestion (load PDFs/Markdown into Pinecone) Implement prompt engineering for better responses Add error handling and rate limiting Want to run this code yourself? Use the CodeSandbox embed below to test the full project: </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-01-15 10:00:00 +0000 UTC'>January 15, 2025</span>&nbsp;·&nbsp;<span>SpringDevPro Team</span></footer>
+  <a class="entry-link" aria-label="post link to Getting Started with Spring AI: Build Your First RAG Application" href="http://localhost:1313/guides/getting-started-with-spring-ai/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">SpringDevPro - Master Spring AI &amp; Spring Ecosystem</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+  <div id="cookie-popup" style="
+  position: fixed;
+  bottom: 30px; /* 微调bottom值，避免底部截断 */
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  width: 100%;
+  max-width: 720px;
+  background: #1f2937; /* 暗色模式背景 */
+  color: #f3f4f6;      /* 暗色模式文字色 */
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  z-index: 9999;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: none; /* 强制清除边框 */
+  overflow: hidden; /* 隐藏内部溢出内容（避免短线） */
+">
+    
+    <p style="
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+    ">
+      We use cookies to enhance your experience, analyze traffic, and serve personalized ads. By using our site, you agree to our
+      <a href="/cookie-policy/" 
+         style="color: ; font-weight: 500; text-decoration: none; border-bottom: 1px solid 50;"
+         target="_blank">
+        Cookie Policy
+      </a>
+      and
+      <a href="/privacy-policy/" 
+         style="color: ; font-weight: 500; text-decoration: none; border-bottom: 1px solid 50;"
+         target="_blank">
+        Privacy Policy
+      </a>.
+    </p>
+
+    
+    <div style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    ">
+      
+      <button id="decline-non-necessary" style="
+        background: #4b5563;
+        color: #f3f4f6;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        min-width: 120px;
+        transition: background 0.2s;
+      " onmouseover="this.style.background='#6b7280'" onmouseout="this.style.background='#4b5563'">
+        Decline Non-Necessary
+      </button>
+
+      
+      <button id="accept-all-cookies" style="
+        background: ;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        min-width: 120px;
+        transition: background 0.2s;
+      " onmouseover="this.style.background='2E7D32'" onmouseout="this.style.background=''">
+        Accept All Cookies
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const consentKey = 'cookieConsent';
+      const popup = document.getElementById('cookie-popup');
+      const acceptBtn = document.getElementById('accept-all-cookies');
+      const declineBtn = document.getElementById('decline-non-necessary');
+
+      
+      popup.style.display = 'none';
+      if (!localStorage.getItem(consentKey)) {
+        popup.style.display = 'flex'; 
+      }
+
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem(consentKey, 'all');
+        popup.style.display = 'none';
+        
+          if (window.adsbygoogle) {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          }
+        
+      });
+
+      declineBtn.addEventListener('click', function() {
+        localStorage.setItem(consentKey, 'necessary');
+        popup.style.display = 'none';
+      });
+    })();
+  </script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

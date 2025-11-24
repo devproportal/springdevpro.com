@@ -12,11 +12,17 @@ params:
   author: "SpringDevPro Team"
   images: ["images/spring-ai-banner.jpg"]  # 社交分享默认图片（放在 assets/images/）
   
+  # # 主题颜色
+  # color: "#2E7D32"
+
   # 布局配置
   layout: "single"  # 文章页默认布局
   darkMode: "auto"  # 自动切换明暗模式（欧美用户偏好）
   disableThemeToggle: false  # 启用明暗模式切换按钮
-  
+
+  # customCSS:
+  #   - "css/custom.css"  # 加载自定义配色
+
   # 导航菜单（对接 PaperMod 导航栏，保留你的栏目）
   mainMenu:
     - name: "Home"
@@ -55,8 +61,9 @@ params:
     adSlotTop: "XXX"  # 顶部广告位 ID
     adSlotInContent: "XXX"  # 文章内广告位 ID
   gdpr:
-    cookiePolicyUrl: "/cookie-policy/"
-    acceptButtonText: "Accept Cookies"
+    cookiePolicyUrl: "/cookie-policy/"  # Cookie政策页面
+    privacyPolicyUrl: "/privacy-policy/"  # 隐私政策页面
+    acceptButtonText: "Accept All Cookies"
     declineButtonText: "Decline Non-Necessary"
 
 # 站点地图配置（保留）
