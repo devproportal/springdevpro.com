@@ -1,0 +1,58 @@
+<!-- {{ partial "shared/header.html" . }}  复用共享导航栏 -->
+
+<main class="container mx-auto px-4 py-8">
+  <!-- 顶部广告位（共享模块组件） -->
+  {{ partial "shared/adsense/top-slot.html" . }}
+
+  <!-- 文章标题区 -->
+  <article class="max-w-3xl mx-auto">
+    <h1 class="article-title">{{ .Title }}</h1>
+    <div class="text-gray-600 mb-6">
+      <span>Published on {{ .Date.Format "January 2, 2006" }}</span>
+      <span class="mx-2">•</span>
+      <span>By {{ .Params.author | default "SpringDevPro Team" }}</span>
+    </div>
+
+    <!-- 文章封面图（Hugo 自动优化） -->
+    {{ if .Params.featuredImage }}
+      {{ $image := resources.Get .Params.featuredImage | resources.Fit "800x400" }}
+      <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="w-full h-auto rounded-lg mb-6">
+    {{ end }}
+
+    <!-- 文章内容（支持代码高亮） -->
+    <div class="prose prose-lg max-w-none">
+      {{ .Content }}
+    </div>
+
+    <!-- 文章内广告位（共享模块组件） -->
+    {{ partial "shared/adsense/in-content-slot.html" . }}
+
+    <!-- 代码在线运行按钮（Spring AI 专属功能） -->
+    {{ if .Params.hasCodeExample }}
+      <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+        <h3 class="font-bold mb-2">Run Code Online</h3>
+        <iframe
+          src="https://codesandbox.io/embed/{{ .Params.codeSandboxId }}?fontsize=14&hidenavigation=1&theme=dark"
+          style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+          title="{{ .Title }} Code Example"
+        ></iframe>
+      </div>
+    {{ end }}
+
+    <!-- 相关文章推荐 -->
+    <div class="mt-10">
+      <h3 class="font-bold text-xl mb-4">Related Spring AI Guides</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{ range first 2 (where .Site.RegularPages "Section" "guides" | intersect (where .Site.RegularPages "Params.tags" "intersect" .Params.tags) | shuffle) }}
+          <a href="{{ .RelPermalink }}" class="p-4 border rounded-lg hover:shadow-md">
+            <h4 class="font-semibold">{{ .Title }}</h4>
+            <p class="text-sm text-gray-600">{{ .Summary | truncate 100 }}</p>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </article>
+</main>
+
+{{ partial "shared/footer.html" . }}  <!-- 复用共享Footer -->
+{{ partial "shared/gdpr-cookie-popup.html" . }}  <!-- 复用GDPR弹窗 -->

@@ -1,0 +1,32 @@
+// 引入共享基础样式
+//@import "shared/base";
+
+// 站点专属配色（Spring 绿色系）
+$primary-color: #2E7D32;
+$secondary-color: #4CAF50;
+$accent-color: #81C784;
+
+// 覆盖共享导航栏样式
+.navbar {
+  background-color: $primary-color;
+  .nav-link {
+    color: white;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+// 文章标题样式（适配技术教程）
+.article-title {
+  color: $primary-color;
+  border-bottom: 2px solid $accent-color;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+// AdSense 广告位样式（避免遮挡内容）
+.adsense-slot {
+  margin: 2rem 0;
+  text-align: center;
+}

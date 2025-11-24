@@ -1,0 +1,62 @@
+baseURL: "https://springdevpro.com/"
+languageCode: "en-us"  # 面向欧美用户，默认英文
+title: "SpringDevPro - Master Spring AI & Spring Ecosystem"
+theme: []  # 依赖共享模块，无需额外主题
+enableRobotsTXT: true  # 启用 robots.txt，SEO 必备
+googleAnalytics: "G-XXX"  # 绑定 Google Analytics 4（欧美用户数据分析）
+
+# 引入共享模块（关键：复用主站公共组件）
+# module:
+#   imports:
+#     - path: github.com/devproportal/hugo-shared-module  # 共享模块仓库地址
+#       mounts:
+#         - source: layouts/partials
+#           target: layouts/partials/shared  # 公共组件路径：shared/xxx.html
+#         - source: assets/scss
+#           target: assets/scss/shared  # 公共样式路径：shared/xxx.scss
+#         - source: config/_default
+#           target: config/_default/shared  # 公共配置路径
+
+# 站点专属配置（Spring AI 特色）
+params:
+  # 站点标识（用于导航栏/标题）
+  siteName: "SpringDevPro"
+  siteTagline: "Practical Spring AI & Spring Boot Tutorials for Developers"
+  logo: "images/spring-dev-pro-logo.svg"  # 站点专属Logo（放在 assets/images/）
+  primaryColor: "#2E7D32"  # Spring 品牌绿色，专属配色
+  # 导航菜单（结合共享导航栏，添加专属栏目）
+  mainMenu:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Spring AI Guides"
+      url: "/guides/"
+      weight: 2
+    - name: "AI Tools Integration"
+      url: "/ai-tools/"
+      weight: 3
+    - name: "Code Examples"
+      url: "/code/"
+      weight: 4
+    - name: "Resources"
+      url: "/resources/"
+      weight: 5
+  # AdSense 配置（共享模块会自动读取）
+  adsense:
+    publisherId: "ca-pub-XXX"  # 替换为你的 AdSense 发布者ID
+    adSlot1: "XXX"  # 顶部横幅广告位ID
+    adSlot2: "XXX"  # 文章内广告位ID
+  # GDPR 合规配置（共享 Cookie 弹窗使用）
+  gdpr:
+    cookiePolicyUrl: "/privacy-policy/"
+    acceptButtonText: "Accept Cookies"
+    declineButtonText: "Decline Non-Necessary"
+
+# 站点地图配置（SEO 必备，自动生成）
+sitemap:
+  changefreq: "weekly"
+  priority: 0.7
+
+# 输出配置（确保静态资源正确生成）
+outputs:
+  home: ["HTML", "RSS", "SITEMAP"]

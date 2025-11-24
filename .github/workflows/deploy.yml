@@ -1,0 +1,35 @@
+name: Deploy SpringDevPro.com to Cloudflare Pages
+
+on:
+  push:
+    branches: [ main ]  # 推送到main分支触发部署
+  pull_request:
+    branches: [ main ]  # PR到main分支触发测试构建
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # 拉取共享模块依赖
+          fetch-depth: 0
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.120.0'
+          extended: true  # 启用extended版本（支持SCSS）
+
+      - name: Build Hugo site
+        run: hugo --minify  # 构建并压缩静态资源
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}  # Cloudflare API令牌（仓库Secret配置）
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}  # Cloudflare账号ID（仓库Secret配置）
+          projectName: springdevpro-com  # Cloudflare Pages项目名（自定义）
+          directory: ./public  # Hugo构建输出目录
+          branch: main

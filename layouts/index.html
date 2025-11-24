@@ -1,0 +1,73 @@
+<!-- {{ partial "shared/header.html" . }} -->
+
+<main>
+  <!-- 英雄区（Spring AI 专属） -->
+  <section class="bg-gradient-to-r from-$primary-color to-$secondary-color text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Master Spring AI & Spring Ecosystem</h1>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Practical tutorials, code examples, and AI tool integration guides for modern developers</p>
+      <a href="/guides/" class="bg-white text-$primary-color font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition">
+        Start Learning Spring AI
+      </a>
+    </div>
+  </section>
+
+  <!-- 核心栏目区 -->
+  <section class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- 栏目1：Spring AI Guides -->
+      <div class="p-6 border rounded-lg hover:shadow-lg transition">
+        <div class="text-$primary-color text-3xl mb-4">📚</div>
+        <h3 class="text-xl font-bold mb-2">Spring AI Guides</h3>
+        <p class="text-gray-600 mb-4">Step-by-step tutorials for Spring AI core features: RAG, LLM integration, vector DBs, and more.</p>
+        <a href="/guides/" class="text-$primary-color font-semibold">Explore Guides →</a>
+      </div>
+
+      <!-- 栏目2：AI Tools Integration -->
+      <div class="p-6 border rounded-lg hover:shadow-lg transition">
+        <div class="text-$primary-color text-3xl mb-4">🔧</div>
+        <h3 class="text-xl font-bold mb-2">AI Tools Integration</h3>
+        <p class="text-gray-600 mb-4">How to integrate popular AI tools (OpenAI, LlamaCpp, Pinecone) with Spring Boot projects.</p>
+        <a href="/ai-tools/" class="text-$primary-color font-semibold">Browse Tools →</a>
+      </div>
+
+      <!-- 栏目3：Code Examples -->
+      <div class="p-6 border rounded-lg hover:shadow-lg transition">
+        <div class="text-$primary-color text-3xl mb-4">💻</div>
+        <h3 class="text-xl font-bold mb-2">Code Examples</h3>
+        <p class="text-gray-600 mb-4">Production-ready Spring AI code snippets: RAG pipelines, LLM chatbots, embedding generation.</p>
+        <a href="/code/" class="text-$primary-color font-semibold">View Code →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门文章区 -->
+  <section class="bg-gray-50 py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-8 text-center">Popular Spring AI Tutorials</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range first 6 (where .Site.RegularPages "Section" "guides" | sort .Date "desc") }}
+          <article class="bg-white p-6 rounded-lg hover:shadow-md transition">
+            {{ if .Params.featuredImage }}
+              {{ $image := resources.Get .Params.featuredImage | resources.Fit "600x300" }}
+              <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="w-full h-48 object-cover rounded mb-4">
+            {{ end }}
+            <h3 class="font-bold text-lg mb-2"><a href="{{ .RelPermalink }}" class="text-gray-800 hover:text-$primary-color">{{ .Title }}</a></h3>
+            <p class="text-gray-600 text-sm mb-4">{{ .Summary | truncate 120 }}</p>
+            <div class="text-sm text-gray-500">
+              {{ .Date.Format "January 2, 2006" }} • {{ .ReadingTime }} min read
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部广告位（提升AdSense收益） -->
+  <section class="container mx-auto px-4 py-8">
+    {{ partial "shared/adsense/bottom-slot.html" . }}
+  </section>
+</main>
+
+{{ partial "shared/footer.html" . }}
+{{ partial "shared/gdpr-cookie-popup.html" . }}
