@@ -3,6 +3,10 @@ public/
 resources/_gen/
 .hugo_build.lock
 
+# local temp files
+.tmp/
+content-temp/
+
 # Node
 node_modules/
 npm-debug.log*

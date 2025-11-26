@@ -1,0 +1,243 @@
+# -- Main Menu --
+# The main menu is displayed in the header at the top of the page.
+# Acceptable parameters are name, pageRef, page, url, title, weight.
+# 
+# The simplest menu configuration is to provide:
+#   name = The name to be displayed for this menu link
+#   pageRef = The identifier of the page or section to link to
+#
+# By default the menu is ordered alphabetically. This can be
+# overridden by providing a weight value. The menu will then be
+# ordered by weight from lowest to highest.
+
+
+##############################################
+# SpringDevPro Navigation – Evolution Plan
+# Full Menu Structure with Phase Annotations
+##############################################
+
+###############
+# Phase 1
+# Week 1–4: 基础篇上线（文章 1–8）
+# 初期尽量简洁，移动端友好
+###############
+
+[[main]]
+name = "Home"
+url  = "/"
+weight = 10
+# 基础永久菜单
+
+[[main]]
+name = "Spring AI Basics"
+url  = "/spring-ai-basics/"
+weight = 20
+# Phase 1：放入入门教程（文章 1–8）
+
+[[main]]
+name = "Guides"
+url  = "/guides/"
+weight = 30
+# Phase 1：通用列表页，不拆分类
+
+
+###############
+# Phase 2
+# Week 5–8: RAG 深度篇（文章 9–17）
+# 新增高权重菜单 RAG
+###############
+
+# [[main]]
+# name = "RAG"
+# url  = "/rag/"
+# weight = 40
+# Phase 2 新增：重要 SEO 栏目
+
+
+###############
+# Phase 3
+# Week 9–12: 模型供应商篇（文章 18–25）
+# 新增 Models
+###############
+
+# [[main]]
+# name = "Models"
+# url  = "/models/"
+# weight = 50
+# Phase 3 新增：所有 Provider 内容统一放置
+
+
+###############
+# Phase 4
+# Week 13–16: 高级主题篇（文章 26–34）
+# 新增 Advanced
+###############
+
+# [[main]]
+# name = "Advanced"
+# url  = "/advanced/"
+# weight = 60
+# Phase 4 新增：多智能体、安全、性能优化等放在这里
+
+
+###############
+# Phase 5
+# Week 17–20: 生产部署篇（文章 35–42）
+# 新增 Production
+###############
+
+# [[main]]
+# name = "Production"
+# url  = "/production/"
+# weight = 70
+# Phase 5 新增：Kubernetes、CI/CD、监控、成本优化等
+
+
+###############
+# Phase 6
+# Week 21–24: 实战项目篇（文章 43–50）
+# 新增 Projects
+###############
+
+# [[main]]
+# name = "Projects"
+# url  = "/projects/"
+# weight = 80
+# Phase 6 新增：AI Chatbot、Code Review、RAG 项目等
+
+
+###############
+# Phase 7
+# Week 25–28: 专题篇（文章 51–58）
+# 新增 Integrations（扩展系统集成内容）
+###############
+
+# [[main]]
+# name = "Integrations"
+# url  = "/integrations/"
+# weight = 90
+# Phase 7 新增：Kafka、Temporal、GraphRAG、行业专题整合
+
+
+###############
+# Phase 1–8 全阶段都保留 Search
+###############
+
+# [[main]]
+# name = "Search"
+# url  = "/search/"
+# weight = 99
+# 全时期：放在最右侧，适合手机端用户快速定位内容
+
+[[main]]
+name = "Legal"
+url  = "/legal/"
+weight = 99
+
+##############################################
+# Footer Navigation（Legal）
+# 注：法律条款永远不出现在主导航，只放 footer
+##############################################
+
+# [[footer]]
+# name = "Privacy Policy"
+# url  = "/legal/privacy/"
+# weight = 1
+
+# [[footer]]
+# name = "Terms of Service"
+# url  = "/legal/terms/"
+# weight = 2
+
+# [[footer]]
+# name = "Cookies"
+# url  = "/legal/cookies/"
+# weight = 3
+
+
+# [[main]]
+#  name = "Blog"
+#  pageRef = "posts"
+#  weight = 10
+
+#[[main]]
+#  name = "Parent"
+#  weight = 20
+
+#[[main]]
+#  name = "example sub-menu 1"
+#  parent = "Parent"
+#  pageRef = "posts"
+#  weight = 20
+
+#[[main]]
+#  name = "example sub-menu 2"
+#  parent = "Parent"
+#  pageRef = "posts"
+#  weight = 20
+
+#[[subnavigation]]
+#  name = "An interesting topic"
+#  pageRef = "tags/interesting-topic"
+#  weight = 10
+
+#[[subnavigation]]
+#  name = "My Awesome Category"
+#  pre = "github"
+#  pageRef = "categories/awesome"
+#  weight = 20
+
+#[[main]]
+#  name = "Categories"
+#  pageRef = "categories"
+#  weight = 20
+
+# [[main]]
+#  name = "Tags"
+#  pageRef = "tags"
+#  weight = 30
+
+# [[main]]
+# name = "Spring AI"
+# url = "/spring-ai/"
+# weight = 10
+
+# [[main]]
+# name = "Guides"
+# url = "/guides/"
+# weight = 20
+
+# [[main]]
+# name = "Examples"
+# url = "/examples/"
+# weight = 30
+
+# [[main]]
+# name = "Integrations"
+# url = "/integrations/"
+# weight = 40
+
+# [[main]]
+# name = "Resources"
+# url = "/resources/"
+# weight = 50
+
+# [[main]]
+# name = "Legal"
+# url = "/legal/"
+# weight = 99
+
+# -- Footer Menu --
+# The footer menu is displayed at the bottom of the page, just before
+# the copyright notice. Configure as per the main menu above.
+
+
+# [[footer]]
+#   name = "Tags"
+#   pageRef = "tags"
+#   weight = 10
+
+# [[footer]]
+#   name = "Categories"
+#   pageRef = "categories"
+#   weight = 20

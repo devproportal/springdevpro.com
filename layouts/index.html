@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+<section class="mx-auto max-w-3xl">
+  <h1 class="text-3xl font-bold mb-6">Spring AI Guides</h1>
+
+  <!-- Featured Guide (Optional) -->
+  <!-- {{ $featured := first 3 (where .Site.RegularPages "Params.featured" true) }}
+  {{ range $featured }}
+    <article class="mb-10 p-4 rounded-lg shadow-sm border border-gray-200">
+      <a href="{{ .RelPermalink }}">
+        <h2 class="text-2xl font-bold mb-2">{{ .Title }}</h2>
+        <p>{{ .Summary }}</p>
+        <p class="text-sm text-gray-500">{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</p>
+      </a>
+    </article>
+  {{ end }} -->
+
+  <!-- 新增：显示 Spring AI Basics 文章 -->
+  {{ $basicsSection := .Site.GetPage "section" "spring-ai-basics" }} {{ if
+  $basicsSection }} {{ range $basicsSection.Pages.ByDate.Reverse }}
+  <article class="mb-10 p-4 rounded-lg shadow-sm border border-gray-200">
+    <a href="{{ .RelPermalink }}">
+      <h2 class="text-2xl font-bold mb-2">{{ .Title }}</h2>
+      <p>{{ .Summary }}</p>
+      <p class="text-sm text-gray-500">
+        {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+      </p>
+    </a>
+  </article>
+  {{ end }} {{ end }}
+
+  <!-- 修复：精准获取 guides 目录的文章 -->
+  <h2 class="text-3xl font-bold mb-6 mt-12">All Guides</h2>
+  {{ $guidesSection := .Site.GetPage "section" "guides" }} {{ if $guidesSection
+  }} {{ range $guidesSection.Pages.ByDate.Reverse }}
+  <!-- 按日期倒序显示 -->
+  <article class="mb-10 p-4 rounded-lg shadow-sm border border-gray-200">
+    <a href="{{ .RelPermalink }}">
+      <h2 class="text-2xl font-bold mb-2">{{ .Title }}</h2>
+      <p>{{ .Summary }}</p>
+      <p class="text-sm text-gray-500">
+        {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+      </p>
+    </a>
+  </article>
+  {{ end }} {{ else }}
+  <p>No guides available yet.</p>
+  {{ end }}
+</section>
+
+{{ end }}
