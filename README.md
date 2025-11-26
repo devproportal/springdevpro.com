@@ -1,5 +1,5 @@
 
-## 🛠️ `springdevpro.com`: Enterprise Spring AI & LLM Architecture
+## 🛠️ `SpringDevPro.com`: Enterprise Spring AI & LLM Architecture
 
 **Live Site:** [https://springdevpro.com](https://springdevpro.com)
 
@@ -96,6 +96,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ### 📧 Contact
 
 **Author:** Jeff Taakey (Principal Architect)
+
 **Email:** support@springdevpro.com
 
 -----
